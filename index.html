@@ -1,41 +1,458 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Softlogic - Soluciones Empresariales</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>softlogic - Software a medida para empresas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Variables de colores */
+    :root {
+      --color-naranja: #FFA726;
+      --color-rojo-coral: #F44336;
+      --color-azul-cielo: #03A9F4;
+      --color-primario: #2C3E50;
+      --color-secundario: #34495E;
+      --color-accento: #E74C3C;
+      --color-verde: #27AE60;
+      --color-morado: #8E44AD;
+      --color-blanco: #FFFFFF;
+      --color-gris-claro: #ECF0F1;
+      --color-gris-medio: #BDC3C7;
+      --color-fondo: #F8F9FA;
+      --color-texto: #2C3E50;
+      --color-texto-claro: #7F8C8D;
+    }
+
+    /* Reset y base */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--color-accento);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--color-secundario);
+    }
+
+    /* Header */
+    header {
+      background: var(--color-primario);
+      color: var(--color-blanco);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 45px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      border-color: var(--color-blanco);
+    }
+
+    /* Container general */
+    .container {
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--color-accento);
+      color: var(--color-blanco);
+      padding: 4rem 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .button-primary {
+      background: var(--color-naranja);
+      color: var(--color-blanco);
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-primary:hover,
+    .button-primary:focus {
+      background: var(--color-rojo-coral);
+      outline: none;
+    }
+
+    /* Secciones */
+    section {
+      margin-bottom: 5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      border-left: 6px solid var(--color-secundario);
+      padding-left: 0.75rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+      color: var(--color-texto);
+    }
+
+    /* Lista de sectores */
+    ul.sectors {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    ul.sectors li {
+      background: var(--color-morado);
+      color: var(--color-blanco);
+      padding: 0.5rem 1.4rem;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      box-shadow: 0 3px 8px rgb(0 0 0 / 0.08);
+      transition: background-color 0.3s ease;
+    }
+
+    ul.sectors li:hover {
+      background-color: var(--color-secundario);
+      cursor: default;
+    }
+
+    /* Pasos proceso */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .step {
+      background: var(--color-blanco);
+      padding: 1.75rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgb(0 0 0 / 0.07);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .step:hover {
+      box-shadow: 0 8px 22px rgb(0 0 0 / 0.12);
+    }
+
+    .step h3 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.25rem;
+      color: var(--color-verde);
+    }
+
+    .step p {
+      margin: 0;
+      color: #334a62;
+      font-weight: 400;
+    }
+
+    /* Servicios como lista vertical */
+    .services-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .services-list li {
+      background: var(--color-blanco);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.07);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--color-secundario);
+      transition: background-color 0.3s ease;
+    }
+
+    .services-list li:hover {
+      background-color: var(--color-morado);
+      color: var(--color-blanco);
+      cursor: default;
+    }
+
+    /* Formulario contacto */
+    form {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--color-secundario);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: 1.8px solid #c5d6e8;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+      color: var(--color-texto);
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--color-morado);
+      box-shadow: 0 0 5px var(--color-morado);
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
+    button[type="submit"] {
+      background: var(--color-naranja);
+      color: var(--color-blanco);
+      border: none;
+      padding: 0.75rem 1.8rem;
+      font-weight: 600;
+      font-size: 1.15rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background: var(--color-rojo-coral);
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--color-primario);
+      color: var(--color-blanco);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-footer {
+      height: 35px;
+      opacity: 0.8;
+    }
+
+    /* Responsive ajustes menores */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        gap: 1rem;
+      }
+
+      ul.sectors {
+        justify-content: center;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <header class="bg-blue-900 text-white p-6 text-center text-2xl font-bold shadow-lg">
-        Softlogic - Innovación para Empresas
-    </header>
-    
-    <section class="text-center py-20 px-5 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
-        <h1 class="text-5xl font-extrabold">Impulsamos tu empresa con tecnología inteligente</h1>
-        <p class="text-lg mt-6 max-w-3xl mx-auto">Ofrecemos soluciones de software diseñadas para optimizar la productividad, mejorar la eficiencia y transformar digitalmente tu negocio.</p>
+
+<body>
+
+  <header>
+    <img src="logo.png" alt="Softlogic Logo" class="logo" />
+    <nav>
+      <a href="#soluciones">Soluciones</a>
+      <a href="#como-trabajamos">Cómo trabajamos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="hero" id="inicio">
+      <h1>Software a medida que potencia tu operación</h1>
+      <p>Entendemos que las empresas no deben adaptar sus operaciones a soluciones estándar de mercado. Ese enfoque
+        suele generar resistencia interna e ineficiencias operativas. Creemos que <strong style="color: white">son las
+          herramientas las que deben
+          adaptarse al funcionamiento de cada empresa, para que esta pueda enfocarse en hacer, cada vez mejor, lo que
+          mejor sabe hacer.</strong></p>
+      <button class="button-primary" id="btnContacto">Hablemos de tu empresa</button>
     </section>
-    
-    <section class="bg-white py-20 px-5 text-center">
-        <h2 class="text-4xl font-bold text-gray-800">Nuestras Soluciones</h2>
-        <div class="flex flex-wrap justify-center gap-8 mt-12">
-            <div class="bg-gray-100 p-8 rounded-lg w-96 shadow-md">
-                <h3 class="text-2xl font-semibold">Automatización de Procesos</h3>
-                <p class="text-gray-700 mt-4">Optimizamos y digitalizamos flujos de trabajo para reducir costos y aumentar la eficiencia operativa.</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg w-96 shadow-md">
-                <h3 class="text-2xl font-semibold">Gestión Empresarial</h3>
-                <p class="text-gray-700 mt-4">Desarrollamos sistemas de gestión adaptados a las necesidades específicas de tu empresa.</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg w-96 shadow-md">
-                <h3 class="text-2xl font-semibold">Análisis de Datos</h3>
-                <p class="text-gray-700 mt-4">Implementamos herramientas de inteligencia de negocio para una mejor toma de decisiones.</p>
-            </div>
+
+    <section id="soluciones">
+      <h2>Soluciones con conocimiento del terreno</h2>
+      <p>Conocemos la operativa real de diversas industrias y sabemos dónde el software puede hacer una diferencia
+        concreta. No ofrecemos productos genéricos: desarrollamos soluciones a medida, con impacto medible.</p>
+
+      <ul class="sectors">
+        <li>Energía</li>
+        <li>Logística</li>
+        <li>Construcción</li>
+        <li>Producción</li>
+        <li>Industria</li>
+        <li>Real Estate</li>
+        <li>Servicios</li>
+      </ul>
+    </section>
+
+    <section id="como-trabajamos">
+      <h2>Un proceso pensado para minimizar riesgos y maximizar resultados</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1. Entendimiento profundo</h3>
+          <p>Analizamos tus procesos, escuchamos a todos los involucrados y comprendemos las interrelaciones entre
+            áreas.</p>
         </div>
+        <div class="step">
+          <h3>2. Diseño del flujo completo</h3>
+          <p>Trazamos el recorrido de las acciones y la información, visualizando dónde se generan oportunidades de
+            mejora.</p>
+        </div>
+        <div class="step">
+          <h3>3. Prototipado funcional</h3>
+          <p>Diseñamos pantallas y simulamos funcionalidades para validar con tu equipo antes de escribir una línea de
+            código.</p>
+        </div>
+        <div class="step">
+          <h3>4. Desarrollo preciso y robusto</h3>
+          <p>Con el flujo claro y validado, desarrollamos sin desvíos ni retrabajos. Esto nos permite entregar sistemas
+            sólidos en menos tiempo.</p>
+        </div>
+      </div>
     </section>
-    
-    <footer class="bg-gray-900 text-white text-center p-6 mt-12">
-        &copy; 2025 Softlogic. Todos los derechos reservados.
-    </footer>
+
+    <section id="servicios">
+      <h2>Desde el diagnóstico hasta el software en producción</h2>
+      <p>Acompañamos a tu empresa en todas las etapas del proceso, adaptándonos a tus necesidades y ritmo operativo.</p>
+      <ul class="services-list">
+        <li>Diagnóstico de procesos y necesidades</li>
+        <li>Rediseño de circuitos operativos</li>
+        <li>Diseño participativo con los usuarios</li>
+        <li>Desarrollo de software a medida</li>
+        <li>Soporte y evolución del sistema en producción</li>
+      </ul>
+    </section>
+
+    <section id="contacto">
+      <h2>Conversemos sobre tu empresa</h2>
+      <form>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="empresa">Empresa</label>
+        <input type="text" id="empresa" name="empresa" required />
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+
+        <button type="submit">Solicitar contacto</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <img src="logo.png" alt="Softlogic Logo" class="logo-footer" />
+    &copy; 2025 Softlogic. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    document.getElementById('btnContacto').addEventListener('click', () => {
+      document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
 </body>
+
 </html>
