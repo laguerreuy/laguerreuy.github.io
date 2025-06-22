@@ -340,6 +340,59 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 3px #999;
+      z-index: 100;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Responsive para el botón de WhatsApp */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -358,7 +411,8 @@
   <main class="container">
 
     <section class="hero" id="inicio">
-      <h1>Software a medida que potencia tu operación</h1>
+      <h1>softlogic</h1>
+      <p>Software a medida que potencia tu operación</p>
       <p>Entendemos que las empresas no deben adaptar sus operaciones a soluciones estándar de mercado. Ese enfoque
         suele generar resistencia interna e ineficiencias operativas. Creemos que <strong style="color: white">son las
           herramientas las que deben
@@ -368,9 +422,9 @@
     </section>
 
     <section id="soluciones">
-      <h2>Soluciones con conocimiento del terreno</h2>
-      <p>Conocemos la operativa real de diversas industrias y sabemos dónde el software puede hacer una diferencia
-        concreta. No ofrecemos productos genéricos: desarrollamos soluciones a medida, con impacto medible.</p>
+      <h2>Soluciones desde las necesidades de tu empresa</h2>
+      <p>Contamos con experiencia real en diversas industrias y sabemos dónde el software puede hacer una diferencia
+        concreta. No ofrecemos productos genéricos: desarrollamos soluciones a medida, con impacto real.</p>
 
       <ul class="sectors">
         <li>Energía</li>
@@ -393,13 +447,13 @@
         </div>
         <div class="step">
           <h3>2. Diseño del flujo completo</h3>
-          <p>Trazamos el recorrido de las acciones y la información, visualizando dónde se generan oportunidades de
-            mejora.</p>
+          <p>Trazamos el recorrido de las acciones y la información, identificando junto a nuestros clientes dónde se
+            generan oportunidades de mejora.</p>
         </div>
         <div class="step">
           <h3>3. Prototipado funcional</h3>
-          <p>Diseñamos pantallas y simulamos funcionalidades para validar con tu equipo antes de escribir una línea de
-            código.</p>
+          <p>Diseñamos pantallas y simulamos funcionalidades para validar con tu equipo antes de comenzar la
+            producción de código.</p>
         </div>
         <div class="step">
           <h3>4. Desarrollo preciso y robusto</h3>
@@ -423,7 +477,7 @@
 
     <section id="contacto">
       <h2>Conversemos sobre tu empresa</h2>
-      <form>
+      <form id="contactForm">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required />
 
@@ -444,12 +498,58 @@
 
   <footer>
     <img src="logo.png" alt="Softlogic Logo" class="logo-footer" />
-    &copy; 2025 Softlogic. Todos los derechos reservados.
+    &copy; 2023 Softlogic. Todos los derechos reservados.
   </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/59897086229?text=Contacto%20desde%20la%20web" class="whatsapp-float" target="_blank"
+    rel="noopener noreferrer" title="Contactar por WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+    </svg>
+  </a>
 
   <script>
     document.getElementById('btnContacto').addEventListener('click', () => {
       document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Manejo del formulario de contacto usando mailto
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const empresa = document.getElementById('empresa').value;
+      const email = document.getElementById('email').value;
+      const mensaje = document.getElementById('mensaje').value;
+
+      // Crear el contenido del email
+      const subject = 'Nuevo contacto desde softlogic.app';
+      const body = `Hola,
+
+He completado el formulario de contacto en softlogic.app con la siguiente información:
+
+Nombre: ${nombre}
+Empresa: ${empresa}
+Email: ${email}
+
+Mensaje:
+${mensaje}
+
+Saludos cordiales.`;
+
+      // Crear el enlace mailto
+      const mailtoLink = `mailto:info@softlogic.app?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // Abrir el cliente de email del usuario
+      window.location.href = mailtoLink;
+
+      // Mostrar mensaje de confirmación
+      alert('Se abrirá tu cliente de email con el mensaje pre-llenado. Por favor, revisa y envía el email.');
+
+      // Limpiar el formulario
+      this.reset();
     });
   </script>
 
