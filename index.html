@@ -62,8 +62,17 @@
       z-index: 10;
       box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    header.header-hidden {
+      transform: translateY(-100%);
+    }
+
+    header.header-visible {
+      transform: translateY(0);
     }
 
     .logo {
@@ -245,6 +254,115 @@
       cursor: default;
     }
 
+    /* Estilos para servicios expandibles */
+    .service-item {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .service-item:hover {
+      background-color: var(--color-blanco) !important;
+      color: var(--color-secundario) !important;
+      box-shadow: 0 5px 20px rgb(0 0 0 / 0.1);
+    }
+
+    .service-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--color-secundario);
+      transition: color 0.3s ease;
+    }
+
+    .service-item:hover .service-header {
+      color: var(--color-secundario);
+    }
+
+    .expand-icon {
+      font-size: 1.5rem;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      color: var(--color-morado);
+    }
+
+    .service-item.expanded .expand-icon {
+      transform: rotate(45deg);
+      color: var(--color-accento);
+    }
+
+    .service-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      margin-top: 0;
+    }
+
+    .service-item.expanded .service-content {
+      max-height: 1000px;
+      margin-top: 1.5rem;
+    }
+
+    .service-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .image-placeholder {
+      background: linear-gradient(135deg, var(--color-gris-claro), var(--color-blanco));
+      border: 2px dashed var(--color-morado);
+      border-radius: 8px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-placeholder:hover {
+      border-color: var(--color-accento);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgb(0 0 0 / 0.1);
+    }
+
+    .image-placeholder::before {
+      content: "📷";
+      font-size: 2rem;
+      opacity: 0.3;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .placeholder-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-texto-claro);
+      text-align: center;
+      padding: 1rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    .service-description {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-texto);
+      line-height: 1.6;
+      margin: 0;
+      padding: 1rem;
+      background: var(--color-gris-claro);
+      border-radius: 6px;
+      border-left: 4px solid var(--color-morado);
+    }
+
     /* Formulario contacto */
     form {
       max-width: 480px;
@@ -339,6 +457,25 @@
       .steps {
         grid-template-columns: 1fr;
       }
+
+      .service-images {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .image-placeholder {
+        height: 120px;
+      }
+
+      .placeholder-text {
+        font-size: 0.8rem;
+        padding: 0.75rem;
+      }
+
+      .service-description {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+      }
     }
 
     /* Botón flotante de WhatsApp */
@@ -393,31 +530,154 @@
         right: 20px;
       }
     }
+
+    /* Modal/Popup styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background-color: var(--color-blanco);
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      animation: slideIn 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .close {
+      color: var(--color-gris-medio);
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: var(--color-accento);
+    }
+
+    .modal h3 {
+      color: var(--color-primario);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--color-morado);
+      padding-bottom: 0.5rem;
+    }
+
+    .modal .clientes {
+      background: var(--color-morado);
+      color: var(--color-blanco);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .modal ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .modal li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--color-gris-claro);
+      color: var(--color-texto);
+      font-weight: 500;
+    }
+
+    .modal li:last-child {
+      border-bottom: none;
+    }
+
+    .modal li:before {
+      content: "✓";
+      color: var(--color-verde);
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Hacer los sectores clickeables */
+    ul.sectors li {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    ul.sectors li:hover {
+      background-color: var(--color-secundario);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 
 <body>
 
   <header>
-    <img src="logo.png" alt="Softlogic Logo" class="logo" />
-    <nav>
-      <a href="#soluciones">Soluciones</a>
-      <a href="#como-trabajamos">Cómo trabajamos</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <div style="display: flex; align-items: center; gap: 3rem;">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <img src="logo.png" alt="Softlogic Logo" class="logo" />
+        <span style="color: var(--color-blanco); font-weight: 700; font-size: 1.5rem;">softlogic</span>
+      </div>
+      <nav>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#como-trabajamos">Cómo trabajamos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
   </header>
 
   <main class="container">
 
     <section class="hero" id="inicio">
-      <h1>softlogic</h1>
       <p>Software a medida que potencia tu operación</p>
-      <p>Entendemos que las empresas no deben adaptar sus operaciones a soluciones estándar de mercado. Ese enfoque
-        suele generar resistencia interna e ineficiencias operativas. Creemos que <strong style="color: white">son las
+      <p>Entendemos que las empresas no deben adaptar sus operaciones a soluciones estándar de mercado. Creemos que
+        <strong style="color: white">son las
           herramientas las que deben
           adaptarse al funcionamiento de cada empresa, para que esta pueda enfocarse en hacer, cada vez mejor, lo que
-          mejor sabe hacer.</strong></p>
+          mejor sabe hacer.</strong>
+      </p>
       <button class="button-primary" id="btnContacto">Hablemos de tu empresa</button>
     </section>
 
@@ -426,12 +686,9 @@
       <p>Contamos con experiencia real en diversas industrias y sabemos dónde el software puede hacer una diferencia
         concreta. No ofrecemos productos genéricos: desarrollamos soluciones a medida, con impacto real.</p>
 
-      <ul class="sectors">
-        <li>Energía</li>
-        <li>Logística</li>
+      <ul class="sectors" style="display: flex; justify-content: center;">
+        <li>Ingeniería</li>
         <li>Construcción</li>
-        <li>Producción</li>
-        <li>Industria</li>
         <li>Real Estate</li>
         <li>Servicios</li>
       </ul>
@@ -467,31 +724,138 @@
       <h2>Desde el diagnóstico hasta el software en producción</h2>
       <p>Acompañamos a tu empresa en todas las etapas del proceso, adaptándonos a tus necesidades y ritmo operativo.</p>
       <ul class="services-list">
-        <li>Diagnóstico de procesos y necesidades</li>
-        <li>Rediseño de circuitos operativos</li>
-        <li>Diseño participativo con los usuarios</li>
-        <li>Desarrollo de software a medida</li>
-        <li>Soporte y evolución del sistema en producción</li>
+        <li class="service-item" data-service="diagnostico">
+          <div class="service-header">
+            <span>Modelado de procesos y necesidades</span>
+            <span class="expand-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-images">
+              <img src="imagenes/flujo.png" alt="Análisis de flujos de trabajo"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+              <img src="imagenes/flujo2.png" alt="Mapeo de procesos"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+              <img src="imagenes/flujo3.png" alt="Entrevistas con usuarios"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+            </div>
+            <p class="service-description">
+              Realizamos un análisis crítico y profundo de tus procesos actuales, con énfasis en la secuencia de tareas
+              de las personas y el flujo de información.<br>
+              Instamos a nuestros clientes a ser críticos con cada paso evaluando siempre qué se hace de más, qué
+              falta por hacerse y qué se puede hacer de mejor manera o con mejores resultados.<br>
+              Evaluamos las posibilidades de integración de las otras herramientas que ya usa la empresa, para que el
+              software se integre con el resto de la empresa de manera fluida y sin complicaciones.
+
+            </p>
+          </div>
+        </li>
+        <li class="service-item" data-service="rediseno">
+          <div class="service-header">
+            <span>Diseño exhaustivo de herramientas informáticas</span>
+            <span class="expand-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-images">
+              <img src="imagenes/mockup.png" alt="mockup"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+              <img src="imagenes/mockup2.png" alt="Mapeo de procesos"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+              <img src="imagenes/mockup3.png" alt="Entrevistas con usuarios"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+            </div>
+            <p class="service-description">
+              Diseñamos una a una todas las pantallas y funcionalidades que se necesitan para que el software funcione
+              correctamente.<br>
+              Describimos en detalle cada una de las pantallas y funcionalidades, para que el cliente pueda entender
+              cómo funciona el software y cómo se integra con el resto de la empresa.<br>
+              Evaluamos en conjunto con el cliente que todas las necesidades estén cubiertas y que el funcionamiento sea
+              el esperado.
+            </p>
+          </div>
+        </li>
+        <li class="service-item" data-service="diseno">
+          <div class="service-header">
+            <span>Ejecución del software</span>
+            <span class="expand-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-images">
+              <img src="imagenes/preal.png" alt="mockup"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+              <img src="imagenes/pgastos.png" alt="Mapeo de procesos"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+              <img src="imagenes/pleads.png" alt="Entrevistas con usuarios"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-morado);">
+            </div>
+            <p class="service-description">
+              Con el flujo claro y validado, comenzamos a desarrollar el software.
+              <br>
+              El camino recorrido previo a ésta etapa nos permite desarrollar el software de manera eficiente y sin
+              complicaciones.
+              Asegurando al cliente que el resultado final sea el esperado y además garantizando plazos cortos de
+              entrega.
+            </p>
+          </div>
+        </li>
+        <li class="service-item" data-service="desarrollo">
+          <div class="service-header">
+            <span>Acompañamiento en la puesta en marcha</span>
+            <span class="expand-icon">+</span>
+          </div>
+          <div class="service-content">
+            <p class="service-description">
+              Nos mantenemos en contacto y a disposición del cliente para resolver cualquier duda o problema que surja o
+              eventualmente para ajustar algún desvío que pueda haberse presentado.
+              <br>
+              Dependiendo de la complejidad de la herramienta incluso se realizan sesiones de capacitación e
+              implementaciones por etapas para generar la mínima perturbación posible en las operaciones de la empresa.
+            </p>
+          </div>
+        </li>
+        <li class="service-item" data-service="soporte">
+          <div class="service-header">
+            <span>Seguimiento y evolución del sistema</span>
+            <span class="expand-icon">+</span>
+          </div>
+          <div class="service-content">
+            <p class="service-description">
+              Entendemos que las empresas hoy en día necesitan flexibilidad y adaptabilidad para poder seguir creciendo
+              y evolucionando.
+              <br>
+              Por un lado el mercado es exigente y cambiante, y por el otro las empresas evolucionan y crecen.
+              <br>
+              Por eso, nos mantenemos en contacto con el cliente para ajustar el software a las necesidades cambiantes
+              de la empresa con el objetivo constante de que el software sea siempre una herramienta que potencia la
+              operación de la empresa.
+            </p>
+          </div>
+        </li>
       </ul>
     </section>
 
     <section id="contacto">
       <h2>Conversemos sobre tu empresa</h2>
-      <form id="contactForm">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required />
-
-        <label for="empresa">Empresa</label>
-        <input type="text" id="empresa" name="empresa" required />
-
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required />
-
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" required></textarea>
-
-        <button type="submit">Solicitar contacto</button>
-      </form>
+      <div style="text-align: center; max-width: 480px; margin: 0 auto;">
+        <div
+          style="background: var(--color-blanco); padding: 2rem; border-radius: 10px; box-shadow: 0 4px 14px rgb(0 0 0 / 0.07);">
+          <h3 style="color: var(--color-primario); margin-bottom: 1.5rem; font-size: 1.5rem;">Softlogic</h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.2rem;">📧</span>
+              <a href="mailto:info@softlogic.app"
+                style="color: var(--color-accento); font-weight: 600; font-size: 1.1rem;">info@softlogic.app</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.2rem;">📞</span>
+              <a href="tel:+59897086229" style="color: var(--color-accento); font-weight: 600; font-size: 1.1rem;">+598
+                97 086 229</a>
+            </div>
+          </div>
+          <p style="margin-top: 1.5rem; color: var(--color-texto-claro); font-style: italic;">
+            Estamos listos para escuchar sobre tu empresa y cómo podemos ayudarte.
+          </p>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -500,6 +864,18 @@
     <img src="logo.png" alt="Softlogic Logo" class="logo-footer" />
     &copy; 2023 Softlogic. Todos los derechos reservados.
   </footer>
+
+  <!-- Modal para mostrar trabajos por sector -->
+  <div id="sectorModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="modalTitle">Sector</h3>
+      <div class="clientes" id="modalClientes">Clientes</div>
+      <ul id="modalTrabajos">
+        <!-- Los trabajos se cargarán dinámicamente -->
+      </ul>
+    </div>
+  </div>
 
   <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/59897086229?text=Contacto%20desde%20la%20web" class="whatsapp-float" target="_blank"
@@ -515,41 +891,148 @@
       document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Manejo del formulario de contacto usando mailto
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+    // Datos de trabajos por sector
+    const trabajosPorSector = {
+      'Ingeniería': {
+        trabajos: [
+          'Gestión de documentos',
+          'Planificación de ingeniería',
+          'Gestión de aprobaciones de documentos',
+          'Envío de documentos a clientes y proveedores'
+        ]
+      },
+      'Construcción': {
+        trabajos: [
+          'Control de pendientes de obra',
+          'Gestión de caja chica y cuentas bancarias',
+          'Reporte de gastos',
+        ]
+      },
+      'Real Estate': {
+        trabajos: [
+          'Control de pago de alquileres',
+          'Generación automática de contratos',
+          'Ajustes por paramétrica',
+          'Avisos de pago y de cobranza'
+        ]
+      },
+      'Servicios': {
+        trabajos: [
+          'Gestión de clientes y nuevos leads',
+          'Seguimiento de flujo de nuevos leads',
+          'Control de membresías',
+          'Gestión de agenda'
+        ]
+      }
+    };
 
-      const nombre = document.getElementById('nombre').value;
-      const empresa = document.getElementById('empresa').value;
-      const email = document.getElementById('email').value;
-      const mensaje = document.getElementById('mensaje').value;
+    // Función para mostrar el modal
+    function mostrarModal(sector) {
+      const modal = document.getElementById('sectorModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalClientes = document.getElementById('modalClientes');
+      const modalTrabajos = document.getElementById('modalTrabajos');
 
-      // Crear el contenido del email
-      const subject = 'Nuevo contacto desde softlogic.app';
-      const body = `Hola,
+      const datos = trabajosPorSector[sector];
 
-He completado el formulario de contacto en softlogic.app con la siguiente información:
+      modalTitle.textContent = sector;
+      modalClientes.style.display = 'none';
 
-Nombre: ${nombre}
-Empresa: ${empresa}
-Email: ${email}
+      // Limpiar trabajos anteriores
+      modalTrabajos.innerHTML = '';
 
-Mensaje:
-${mensaje}
+      // Agregar trabajos
+      datos.trabajos.forEach(trabajo => {
+        const li = document.createElement('li');
+        li.textContent = trabajo;
+        modalTrabajos.appendChild(li);
+      });
 
-Saludos cordiales.`;
+      modal.style.display = 'block';
+    }
 
-      // Crear el enlace mailto
-      const mailtoLink = `mailto:info@softlogic.app?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Función para cerrar el modal
+    function cerrarModal() {
+      document.getElementById('sectorModal').style.display = 'none';
+    }
 
-      // Abrir el cliente de email del usuario
-      window.location.href = mailtoLink;
+    // Event listeners para los sectores
+    document.querySelectorAll('ul.sectors li').forEach(sector => {
+      sector.addEventListener('click', () => {
+        mostrarModal(sector.textContent);
+      });
+    });
 
-      // Mostrar mensaje de confirmación
-      alert('Se abrirá tu cliente de email con el mensaje pre-llenado. Por favor, revisa y envía el email.');
+    // Event listeners para cerrar el modal
+    document.querySelector('.close').addEventListener('click', cerrarModal);
 
-      // Limpiar el formulario
-      this.reset();
+    // Cerrar modal al hacer clic fuera de él
+    window.addEventListener('click', (event) => {
+      const modal = document.getElementById('sectorModal');
+      if (event.target === modal) {
+        cerrarModal();
+      }
+    });
+
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        cerrarModal();
+      }
+    });
+
+    // Funcionalidad para servicios expandibles
+    document.querySelectorAll('.service-item').forEach(serviceItem => {
+      serviceItem.addEventListener('click', function () {
+        // Toggle la clase expanded
+        this.classList.toggle('expanded');
+
+        // Opcional: cerrar otros servicios abiertos
+        // document.querySelectorAll('.service-item.expanded').forEach(expandedItem => {
+        //   if (expandedItem !== this) {
+        //     expandedItem.classList.remove('expanded');
+        //   }
+        // });
+      });
+    });
+
+    // Prevenir que el clic en el contenido expandido cierre la sección
+    document.querySelectorAll('.service-content').forEach(content => {
+      content.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    });
+
+    // Control de visibilidad del header basado en scroll
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const scrollThreshold = 50; // Umbral mínimo de scroll para activar la funcionalidad
+
+    window.addEventListener('scroll', function () {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      // Solo aplicar la lógica si hemos scrolleado más que el umbral
+      if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+          // Scrolling hacia abajo y no estamos en la parte superior
+          header.classList.remove('header-visible');
+          header.classList.add('header-hidden');
+        } else {
+          // Scrolling hacia arriba
+          header.classList.remove('header-hidden');
+          header.classList.add('header-visible');
+        }
+        lastScrollTop = scrollTop;
+      }
+    });
+
+    // Mostrar header cuando estamos en la parte superior
+    window.addEventListener('scroll', function () {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop <= 100) {
+        header.classList.remove('header-hidden');
+        header.classList.add('header-visible');
+      }
     });
   </script>
 
