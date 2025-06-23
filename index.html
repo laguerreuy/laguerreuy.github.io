@@ -82,7 +82,7 @@
     nav {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
@@ -97,6 +97,26 @@
     nav a:hover,
     nav a:focus {
       border-color: var(--color-blanco);
+    }
+
+    /* Estilos para navegación responsive */
+    .nav-icon {
+      display: none;
+      font-size: 1rem;
+    }
+
+    .nav-text {
+      display: inline;
+    }
+
+    /* Estilos para brand móvil */
+    .mobile-brand {
+      display: none;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--color-azul-cielo);
     }
 
     /* Container general */
@@ -442,12 +462,47 @@
 
     /* Responsive ajustes menores */
     @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2rem;
+      .brand-text {
+        display: none;
+      }
+
+      .mobile-brand {
+        display: block;
+      }
+
+      .nav-text {
+        display: none;
+      }
+
+      .nav-icon {
+        display: inline;
       }
 
       nav {
         gap: 1rem;
+      }
+
+      nav a {
+        padding: 0.5rem;
+        border-radius: 50%;
+        min-width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: none;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      nav a:hover,
+      nav a:focus {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      .hero h1 {
+        font-size: 2rem;
       }
 
       ul.sectors {
@@ -475,6 +530,10 @@
       .service-description {
         font-size: 0.95rem;
         padding: 0.75rem;
+      }
+
+      .logo {
+        height: 32px;
       }
     }
 
@@ -657,19 +716,33 @@
     <div style="display: flex; align-items: center; gap: 3rem;">
       <div style="display: flex; align-items: center; gap: 1rem;">
         <img src="logo.png" alt="Softlogic Logo" class="logo" />
-        <span style="color: var(--color-blanco); font-weight: 700; font-size: 1.5rem;">softlogic</span>
+        <span class="brand-text"
+          style="color: var(--color-blanco); font-weight: 700; font-size: 1.5rem;">softlogic</span>
       </div>
       <nav>
-        <a href="#soluciones">Soluciones</a>
-        <a href="#como-trabajamos">Cómo trabajamos</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#soluciones">
+          <span class="nav-text">Soluciones</span>
+          <span class="nav-icon">🎯</span>
+        </a>
+        <a href="#como-trabajamos">
+          <span class="nav-text">Cómo trabajamos</span>
+          <span class="nav-icon">⚙️</span>
+        </a>
+        <a href="#servicios">
+          <span class="nav-text">Servicios</span>
+          <span class="nav-icon">🛠️</span>
+        </a>
+        <a href="#contacto">
+          <span class="nav-text">Contacto</span>
+          <span class="nav-icon">📞</span>
+        </a>
       </nav>
     </div>
   </header>
 
   <main class="container">
 
+    <h1 class="mobile-brand">softlogic</h1>
     <section class="hero" id="inicio">
       <p>Software a medida que potencia tu operación</p>
       <p>Entendemos que las empresas no deben adaptar sus operaciones a soluciones estándar de mercado. Creemos que
