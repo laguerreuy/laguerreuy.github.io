@@ -128,9 +128,9 @@
 
     /* Hero */
     .hero {
-      background: var(--color-accento);
+      background: var(--color-gris-medio);
       color: var(--color-blanco);
-      padding: 4rem 2rem;
+      padding: 2rem 2rem;
       border-radius: 10px;
       text-align: center;
       box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
@@ -217,7 +217,7 @@
     /* Pasos proceso */
     .steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
       margin-top: 1.5rem;
     }
@@ -461,7 +461,7 @@
     }
 
     /* Responsive ajustes menores */
-    @media (max-width: 550px) {
+    @media (max-width: 740px) {
       .brand-text {
         display: none;
       }
@@ -703,7 +703,7 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
-    @media (min-width: 351px) and (max-width: 550px) {
+    @media (min-width: 351px) and (max-width: 740px) {
       .nav-icon {
         font-size: 1.3rem;
       }
