@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InmoRP Mockups Index</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --accent: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: capitalize;
+        }
+
+        .links-list {
+            list-style: none;
+        }
+
+        .links-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .links-list a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .links-list a:hover {
+            background-color: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+            padding-left: 1rem;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 9999px;
+            background-color: var(--accent);
+            color: var(--bg);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: auto;
+        }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>InmoRP Mockups</h1>
+            <p class="subtitle">Direct access to each nested mockup file grouped by category</p>
+        </header>
+
+        <div class="grid">
+            <!-- Corredor -->
+            <div class="category-card">
+                <div class="category-title">
+                    <span>🏢</span> Corredor
+                </div>
+                <ul class="links-list">
+                    <li><a href="corredor/stitch_inmorp/portal_del_corredor_validaci_n_de_p_lizas/code.html"
+                            title="Portal del Corredor: Validación de Pólizas">Portal del Corredor: Validación de
+                            Pólizas</a></li>
+                    <li><a href="corredor/stitch_inmorp/solicitud_de_garant_a_datos_de_inquilinos/code.html"
+                            title="Solicitud de Garantía: Datos de Inquilinos">Solicitud de Garantía: Datos de
+                            Inquilinos</a></li>
+                </ul>
+            </div>
+
+            <!-- Inmobiliaria -->
+            <div class="category-card">
+                <div class="category-title">
+                    <span>🏠</span> Inmobiliaria
+                </div>
+                <ul class="links-list">
+                    <li><a href="inmobiliaria/stitch_inmorp/automated_contract_generator/code.html"
+                            title="Automated Contract Generator">Automated Contract Generator</a></li>
+                    <li><a href="inmobiliaria/stitch_inmorp/commercial_team_agenda_1/code.html"
+                            title="Commercial Team Agenda 1">Commercial Team Agenda 1</a></li>
+                    <li><a href="inmobiliaria/stitch_inmorp/commercial_team_agenda_2/code.html"
+                            title="Commercial Team Agenda 2">Commercial Team Agenda 2</a></li>
+                    <li><a href="inmobiliaria/stitch_inmorp/control_de_cobros_y_firmas_pendientes/code.html"
+                            title="Control de Cobros y Firmas Pendientes">Control de Cobros y Firmas Pendientes</a></li>
+                    <li><a href="inmobiliaria/stitch_inmorp/crm_dashboard_overview/code.html"
+                            title="CRM Dashboard Overview">CRM Dashboard Overview</a></li>
+                    <li><a href="inmobiliaria/stitch_inmorp/desempe_o_de_agentes_45_d_as/code.html"
+                            title="Desempeño de Agentes (45 días)">Desempeño de Agentes (45 días)</a></li>
+                    <li><a href="inmobiliaria/stitch_inmorp/ficha_t_cnica_y_gesti_n_de_propiedad/code.html"
+                            title="Ficha Técnica y Gestión de Propiedad">Ficha Técnica y Gestión de Propiedad</a></li>
+                    <li><a href="inmobiliaria/stitch_inmorp/property_inventory_management/code.html"
+                            title="Property Inventory Management">Property Inventory Management</a></li>
+                </ul>
+            </div>
+
+            <!-- Inquilinos -->
+            <div class="category-card">
+                <div class="category-title">
+                    <span>🔑</span> Inquilinos
+                </div>
+                <ul class="links-list">
+                    <li><a href="inquilinos/stitch_inmorp/portal_del_inquilino_gesti_n_de_alquiler_1/code.html"
+                            title="Portal del Inquilino: Gestión de Alquiler 1">Portal del Inquilino: Gestión de
+                            Alquiler 1</a></li>
+                    <li><a href="inquilinos/stitch_inmorp/portal_del_inquilino_gesti_n_de_alquiler_2/code.html"
+                            title="Portal del Inquilino: Gestión de Alquiler 2">Portal del Inquilino: Gestión de
+                            Alquiler 2</a></li>
+                </ul>
+            </div>
+
+            <!-- Propietarios -->
+            <div class="category-card">
+                <div class="category-title">
+                    <span>🤝</span> Propietarios
+                </div>
+                <ul class="links-list">
+                    <li><a href="propietarios/stitch_inmorp/commercial_team_agenda_1/code.html"
+                            title="Commercial Team Agenda 1">Commercial Team Agenda 1</a></li>
+                    <li><a href="propietarios/stitch_inmorp/commercial_team_agenda_2/code.html"
+                            title="Commercial Team Agenda 2">Commercial Team Agenda 2</a></li>
+                    <li><a href="propietarios/stitch_inmorp/crm_dashboard_overview/code.html"
+                            title="CRM Dashboard Overview">CRM Dashboard Overview</a></li>
+                    <li><a href="propietarios/stitch_inmorp/portal_del_propietario_control_de_rentas_1/code.html"
+                            title="Portal del Propietario: Control de Rentas 1">Portal del Propietario: Control de
+                            Rentas 1</a></li>
+                    <li><a href="propietarios/stitch_inmorp/portal_del_propietario_control_de_rentas_2/code.html"
+                            title="Portal del Propietario: Control de Rentas 2">Portal del Propietario: Control de
+                            Rentas 2</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 InmoRP. All mockups generated via Stitch.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

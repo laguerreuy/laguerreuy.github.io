@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Creación de Contrato de Alquiler - EstateSync CRM</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-2xl block">apartment</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">EstateSync <span class="text-primary">CRM</span></h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">Propiedades</a>
+<a class="text-sm font-semibold text-primary" href="#">Contratos</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">Inquilinos</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">Propietarios</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Buscar..." type="text"/>
+</div>
+<div class="flex items-center gap-3 border-l border-slate-200 dark:border-slate-800 pl-4">
+<div class="text-right hidden lg:block">
+<p class="text-sm font-semibold leading-none">Alex Rivera</p>
+<p class="text-xs text-slate-500 mt-1">Gestor Inmobiliario</p>
+</div>
+<img alt="Avatar" class="w-9 h-9 rounded-full border border-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJqfsxExyKqLQWlzbHpciPIkVoZ04HQG02T5-BeVwX8ZJLWhnx9BgR2_sduPDOl1mtd-Nt0Aj1RJlitOsA4ouN3OXTlRd5DEyFGLR8az9sNTX798lqbyjsrPewgRLMgq08cHpKwRjFNFnK7sD90J3sL8PlYoc1LRwEneKCjMME1yuTMR0qQaaEQD7ZcURk7HdUcFL5ugk3w1l0KsnySYCH5BgPgYOVlgKgaG-lQtYeDZYzyj1YgxfMNxITkQpV7ESgPxzRvCw-cQ3O"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-4 py-8">
+<div class="mb-8">
+<nav class="flex items-center gap-2 text-sm text-slate-500 mb-6">
+<a class="hover:text-primary transition-colors" href="#">Contratos</a>
+<span class="material-symbols-outlined text-base">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-200 font-medium">Creación de Contrato</span>
+</nav>
+<div class="mb-10">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Creación de Contrato Detallado Uruguay</h2>
+<p class="text-slate-500">Complete todos los campos para generar el documento legal para Uruguay.</p>
+</div>
+</div>
+<div class="space-y-8 pb-32">
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined block">home</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">1. Información del Inmueble</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wide">Ubicación y detalles de la propiedad</p>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Dirección en Montevideo</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="text" value="Av. 18 de Julio 1234, Apto 402, Centro"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Departamento</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option selected="">Montevideo</option>
+<option>Canelones</option>
+<option>Maldonado</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Padrón</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="text" value="154.321"/>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<div class="flex items-center gap-3">
+<div class="bg-purple-100 dark:bg-purple-900/40 p-2 rounded-lg text-purple-600">
+<span class="material-symbols-outlined block">assignment_turned_in</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">2. Condiciones Especiales</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wide">Restricciones y acuerdos específicos</p>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="space-y-6">
+<div class="flex flex-wrap gap-4 items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Opciones rápidas</label>
+<div class="flex flex-wrap gap-2">
+<label class="inline-flex items-center px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-medium cursor-pointer hover:border-primary transition-colors">
+<input class="hidden peer" type="checkbox"/>
+<span class="peer-checked:text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm peer-checked:block hidden">check_circle</span>
+                                        No admite mascotas
+                                    </span>
+</label>
+<label class="inline-flex items-center px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-medium cursor-pointer hover:border-primary transition-colors">
+<input class="hidden peer" type="checkbox"/>
+<span class="peer-checked:text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm peer-checked:block hidden">check_circle</span>
+                                        Solo adultos
+                                    </span>
+</label>
+</div>
+</div>
+<div class="w-48">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Máximo de habitantes</label>
+<div class="relative">
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" min="1" type="number" value="2"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">groups</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Otras condiciones</label>
+<textarea class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary h-20" placeholder="Especifique otras cláusulas particulares..."></textarea>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<div class="flex items-center gap-3">
+<div class="bg-blue-100 dark:bg-blue-900/40 p-2 rounded-lg text-blue-600">
+<span class="material-symbols-outlined block">history_edu</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">3. Firmantes</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wide">Arrendadores y Arrendatarios</p>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-8">
+<div>
+<div class="flex justify-between items-center mb-4">
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Arrendadores</h4>
+<button class="text-primary text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">add_circle</span> Añadir Otro
+                        </button>
+</div>
+<div class="space-y-4">
+<div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<div class="md:col-span-5">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Nombre Completo</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="text" value="Elena Martínez Soria"/>
+</div>
+<div class="md:col-span-3">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Cédula de Identidad</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="text" value="3.948.572-4"/>
+</div>
+<div class="md:col-span-4">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Correo Electrónico</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="email" value="elena.m@correo.uy"/>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-4 border-t border-slate-100 dark:border-slate-800 pt-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Documentación:</span>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-green-600">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span class="text-xs font-medium">Cédula de Identidad</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-lg">radio_button_unchecked</span>
+<span class="text-xs font-medium">Recibo de Sueldo</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="border-slate-100 dark:border-slate-800"/>
+<div>
+<div class="flex justify-between items-center mb-4">
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Arrendatarios</h4>
+<button class="text-primary text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">person_add</span> Buscar Contacto
+                        </button>
+</div>
+<div class="space-y-6">
+<div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<div class="md:col-span-5">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Nombre Completo</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="text" value="Gabriel Techera Pereyra"/>
+</div>
+<div class="md:col-span-3">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Cédula de Identidad</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="text" value="1.234.567-8"/>
+</div>
+<div class="md:col-span-3">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Teléfono</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="tel" value="099 123 456"/>
+</div>
+<div class="md:col-span-1 flex justify-center items-end pb-1.5">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-4 border-t border-slate-100 dark:border-slate-800 pt-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Documentación:</span>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-green-600">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span class="text-xs font-medium">Cédula de Identidad</span>
+</div>
+<div class="flex items-center gap-1 text-green-600">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span class="text-xs font-medium">Recibo de Sueldo</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<div class="md:col-span-5">
+<input class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Segundo Arrendatario..." type="text"/>
+</div>
+<div class="md:col-span-3">
+<input class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="C.I. 0.000.000-0" type="text"/>
+</div>
+<div class="md:col-span-3">
+<input class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Teléfono" type="tel"/>
+</div>
+<div class="md:col-span-1 flex justify-center">
+<button class="text-slate-300 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-4 border-t border-slate-100 dark:border-slate-800 pt-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Documentación:</span>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-lg">radio_button_unchecked</span>
+<span class="text-xs font-medium text-slate-400">Cédula de Identidad</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-lg">radio_button_unchecked</span>
+<span class="text-xs font-medium text-slate-400">Recibo de Sueldo</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<div class="flex items-center gap-3">
+<div class="bg-amber-100 dark:bg-amber-900/40 p-2 rounded-lg text-amber-600">
+<span class="material-symbols-outlined block">verified_user</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">4. Garantía</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wide">Respaldo financiero del contrato</p>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="relative flex flex-col p-4 border-2 border-slate-100 dark:border-slate-800 rounded-xl cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<input class="sr-only peer" name="garantia" type="radio"/>
+<div class="peer-checked:text-primary mb-2 text-slate-400">
+<span class="material-symbols-outlined text-3xl">account_balance</span>
+</div>
+<span class="text-sm font-bold">BHU / Depósito</span>
+<span class="text-xs text-slate-500">Depósito en garantía</span>
+<div class="absolute top-3 right-3 w-5 h-5 border-2 border-slate-300 rounded-full peer-checked:border-primary peer-checked:bg-primary after:content-[''] after:absolute after:inset-1 after:rounded-full after:bg-white after:opacity-0 peer-checked:after:opacity-100"></div>
+</label>
+<label class="relative flex flex-col p-4 border-2 border-primary bg-primary/5 rounded-xl cursor-pointer">
+<input checked="" class="sr-only peer" name="garantia" type="radio"/>
+<div class="text-primary mb-2 flex justify-between items-start">
+<span class="material-symbols-outlined text-3xl">shield_with_heart</span>
+<div class="bg-green-600 text-white text-[9px] font-black px-2 py-0.5 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">verified</span>
+                                    APROBADA
+                                </div>
+</div>
+<span class="text-sm font-bold">Póliza de Seguro</span>
+<span class="text-xs text-slate-500">Aseguradora privada</span>
+<div class="absolute top-3 right-3 w-5 h-5 border-2 border-primary bg-primary rounded-full after:content-[''] after:absolute after:inset-1 after:rounded-full after:bg-white"></div>
+</label>
+<label class="relative flex flex-col p-4 border-2 border-slate-100 dark:border-slate-800 rounded-xl cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<input class="sr-only peer" name="garantia" type="radio"/>
+<div class="peer-checked:text-primary mb-2 text-slate-400">
+<span class="material-symbols-outlined text-3xl">person_check</span>
+</div>
+<span class="text-sm font-bold">CGN / ANDA</span>
+<span class="text-xs text-slate-500">Garantía de alquiler</span>
+<div class="absolute top-3 right-3 w-5 h-5 border-2 border-slate-300 rounded-full peer-checked:border-primary peer-checked:bg-primary after:content-[''] after:absolute after:inset-1 after:rounded-full after:bg-white after:opacity-0 peer-checked:after:opacity-100"></div>
+</label>
+</div>
+<div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/50">
+<div class="flex flex-col gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-blue-700 dark:text-blue-400 uppercase mb-1.5">Aseguradora</label>
+<select class="w-full bg-white dark:bg-slate-800 border-blue-200 dark:border-blue-900 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option selected="">Sura</option>
+<option>Porto Seguro</option>
+<option>Mapfre</option>
+<option>Sancor Seguros</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-blue-700 dark:text-blue-400 uppercase mb-1.5">Nro de Póliza</label>
+<input class="w-full bg-white dark:bg-slate-800 border-blue-200 dark:border-blue-900 rounded-lg text-sm focus:ring-primary focus:border-primary" type="text" value="SUR-2948572"/>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-blue-100 dark:border-blue-800/50 pt-3">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs font-bold text-green-700 dark:text-green-400">ESTADO: PÓLIZA APROBADA</span>
+</div>
+<span class="text-[10px] text-blue-600 dark:text-blue-400 italic">Validado por Corredor: Seguros S.A.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<div class="flex items-center gap-3">
+<div class="bg-green-100 dark:bg-green-900/40 p-2 rounded-lg text-green-600">
+<span class="material-symbols-outlined block">description</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">5. Detalles del Contrato</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wide">Plazos, Precios y Cláusulas</p>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Precio del Alquiler (UYU)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+<input class="w-full pl-7 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="number" value="28500"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Plazo (Meses)</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option>12 meses</option>
+<option selected="">24 meses</option>
+<option>36 meses</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Fecha de Inicio</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" type="date" value="2024-06-01"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Tipo de Ajuste</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option selected="">IPC</option>
+<option>ICL</option>
+<option>Fijo</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Frecuencia de Ajuste</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option>4 meses</option>
+<option>6 meses</option>
+<option selected="">12 meses</option>
+</select>
+</div>
+<div class="md:col-span-3">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Notas o Cláusulas Especiales</label>
+<textarea class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary h-24" placeholder="Agregue aquí cláusulas adicionales de mantenimiento, mascotas, etc..."></textarea>
+</div>
+</div>
+</div>
+</section>
+<div class="flex justify-center pt-4">
+<button class="flex items-center gap-3 px-12 py-4 bg-primary text-white font-bold text-lg rounded-xl shadow-xl shadow-primary/30 hover:bg-primary/90 hover:-translate-y-0.5 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">description</span>
+                Generar Contrato
+            </button>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-[0.03] dark:opacity-[0.02]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAawvwKUHevj6d4sBT98QN5YUvfwoNrHhxOttBpAoR3NjQjhYBTCKmgI-cllXwclw9rPgR8FY12nAxCJ_FkrnTARxfZv1URiOhGFII0kerBOBsHUZK7HhVMVqY6VYvACIit71nMKCOKC624MpGqSKKutCZq2uBoB6MtEqbCE4H3pWOK_aIwtsfCO8MHFlhZIqdfq2-eUT2a_DX2HXtSbQqYiqFliMYZbUdG_d9H796VtPtcxD15gBQjTe3XhywAko-JTcfK4br7JzIb');"></div>
+
+</body></html>

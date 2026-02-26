@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal del Inquilino - Gestión de Alquiler</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">real_estate_agent</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Portal Inquilino</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold text-primary" href="#">Resumen</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Contratos</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Pagos</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Documentación</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+                        Editar Datos
+                    </button>
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 border-2 border-white dark:border-slate-800 overflow-hidden shadow-sm">
+<img alt="Foto de perfil del inquilino" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3qa5EPvGc6CvIRpTOBtiAfaVHAEmz5bTvn5avOtk7OZYJqG2FFzJpYfX36MlVTw-vjuSe7gthcfezjFrAvWwGHBf_BuOUgcntcoYAH4AGIlJd7IObWcT5CJawI81YF1g2zZxcYRs13Y7Sei52gaHtmnRBVCr4V_6Ny5t-KkNK5trR3NV-ByIvfl_UvZdNw1Yx5YVO2kA-gyQEHKHKRFeswlFRkhMwcJm3rrRx9vBWrfWfXsG5xl-5qHC6iO23wckbqmXfeeCqzSk4"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Bienvenido, Juan Pérez</h2>
+<p class="mt-1 text-slate-500 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                    Inquilino activo desde Enero 2022
+                </p>
+</div>
+<div class="flex gap-3">
+<span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50">
+                    Contrato Vigente
+                </span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<aside class="lg:col-span-4 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+                            Mi Contrato
+                        </h3>
+</div>
+<div class="p-6 space-y-6">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Dirección del Inmueble</p>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-400">location_on</span>
+<p class="text-slate-800 dark:text-slate-200 font-medium">Av. 18 de Julio 1234, Ap. 502<br/>Montevideo, Uruguay</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Precio Actual</p>
+<p class="text-xl font-bold text-slate-900 dark:text-white">$ 25.000 <span class="text-sm font-normal text-slate-500">UYU</span></p>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Garantía</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">verified_user</span>
+<p class="text-slate-800 dark:text-slate-200 font-medium">Sura</p>
+</div>
+</div>
+</div>
+<div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800">
+<div class="bg-primary/5 border border-primary/20 rounded-lg p-4">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Próximo Ajuste</p>
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-white font-bold">Noviembre 2024</p>
+<span class="text-xs bg-primary text-white px-2 py-0.5 rounded font-bold">IPC</span>
+</div>
+<p class="text-xs text-primary/80 mt-1 italic">Estimado en 6 meses</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<div class="lg:col-span-8 space-y-8">
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+                            Cuenta Corriente
+                        </h3>
+<div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 p-1 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-bold bg-white dark:bg-slate-700 shadow-sm rounded-md text-primary">2024</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors">2023</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Mes / Concepto</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Monto</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-center">Estado</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="bg-primary/[0.03]">
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">Mayo 2024</span>
+<span class="text-xs text-slate-500">Alquiler mensual</span>
+</div>
+</td>
+<td class="px-6 py-6 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$ 25.000</span>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50">
+                                            Pendiente
+                                        </span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md hover:bg-primary/90 transition-all hover:translate-y-[-1px]">
+<span class="material-symbols-outlined text-sm">cloud_upload</span>
+                                            Cargar Comprobante
+                                        </button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900 dark:text-white">Abril 2024</span>
+<span class="text-xs text-slate-500">Alquiler mensual</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-medium text-slate-700 dark:text-slate-300">$ 25.000</span>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800/30">
+                                            Pagado
+                                        </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:text-primary/80 transition-colors p-2 hover:bg-primary/5 rounded-lg">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+                            Otras Obligaciones y Servicios
+                        </h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Mes / Servicio</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Monto</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-center">Estado</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="bg-primary/[0.03]">
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">Mayo 2024</span>
+<span class="text-xs text-slate-500">Gastos Comunes</span>
+</div>
+</td>
+<td class="px-6 py-6 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$ 4.200</span>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50">
+                                            Pendiente
+                                        </span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md hover:bg-primary/90 transition-all hover:translate-y-[-1px]">
+<span class="material-symbols-outlined text-sm">cloud_upload</span>
+                                            Cargar Comprobante
+                                        </button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900 dark:text-white">Mayo 2024</span>
+<span class="text-xs text-slate-500">UTE</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-medium text-slate-700 dark:text-slate-300">$ 1.850</span>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800/30">
+                                            Pagado
+                                        </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:text-primary/80 transition-colors p-2 hover:bg-primary/5 rounded-lg">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="bg-primary/[0.03]">
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">Abril 2024</span>
+<span class="text-xs text-slate-500">Tributos Domiciliarios</span>
+</div>
+</td>
+<td class="px-6 py-6 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$ 1.150</span>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50">
+                                            Pendiente
+                                        </span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md hover:bg-primary/90 transition-all hover:translate-y-[-1px]">
+<span class="material-symbols-outlined text-sm">cloud_upload</span>
+                                            Cargar Comprobante
+                                        </button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900 dark:text-white">Marzo 2024</span>
+<span class="text-xs text-slate-500">OSE</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-medium text-slate-700 dark:text-slate-300">$ 680</span>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800/30">
+                                            Pagado
+                                        </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:text-primary/80 transition-colors p-2 hover:bg-primary/5 rounded-lg">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center text-slate-400 text-sm">
+<p>© 2024 CRM Inmobiliario Uruguay - Gestión de Alquileres.</p>
+<div class="flex justify-center gap-6 mt-4">
+<a class="hover:text-primary transition-colors" href="#">Términos y Condiciones</a>
+<span class="text-slate-200 dark:text-slate-800">|</span>
+<a class="hover:text-primary transition-colors" href="#">Políticas de Privacidad</a>
+<span class="text-slate-200 dark:text-slate-800">|</span>
+<a class="hover:text-primary transition-colors" href="#">Contacto</a>
+</div>
+</footer>
+
+</body></html>

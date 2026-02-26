@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestión Detallada de Propiedad V2 - CRM Inmobiliario</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#308ce8",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        .dark .timeline-line::before {
+            background-color: #334155;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<header class="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary text-white p-1.5 rounded-lg">
+<span class="material-symbols-outlined block">domain</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">CRM Inmobiliario</h1>
+</div>
+<div class="hidden md:block">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-64 pl-10 pr-3 py-2 border-none bg-slate-100 dark:bg-slate-800 rounded-lg leading-5 placeholder-slate-500 focus:ring-2 focus:ring-primary sm:text-sm transition-all" placeholder="Buscar propiedades, clientes..." type="text"/>
+</div>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Propiedades</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Contratos</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Clientes</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Reportes</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs border border-primary/30">
+                        JD
+                    </div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<nav class="flex text-sm font-medium text-slate-500 dark:text-slate-400 mb-6 gap-2">
+<a class="hover:text-primary" href="#">Propiedades</a>
+<span>/</span>
+<span class="text-slate-900 dark:text-slate-100">Juan Benito Blanco, Pocitos</span>
+</nav>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 mb-8">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+<div class="flex gap-6 items-start">
+<div class="h-24 w-24 rounded-lg overflow-hidden flex-shrink-0 border border-slate-100 dark:border-slate-800">
+<img alt="Main facade of property in Pocitos" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACGPyw0LU3x3Lr5CCP9CXpnnGSIaHv98n04bLrp6jXWiNjul1VGY0wa2Jmima4OAwGj6wJb7fFdk9MYPnizwr8Ak9BaBzaFMi-4iQBNoMCygxjhYgIKek_rk7ADibLStKsOYe0uq2D-2dPUuHjTc7b8C-i2_RuDyCLevCAsrNqp8GJVzq4-seej02svLbmzSDZjG6jgm9SnjeemrzpR-K2jOEmvoQ3CwGYQyaNknsaiaPocpC_kJXT3FuolG9tJBBkElWS598es4Eq"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Juan Benito Blanco 1234</h2>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wide">Alquilado</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">location_on</span> Pocitos, Montevideo, Uruguay
+                        </p>
+<div class="mt-3 flex items-center gap-4">
+<div class="text-lg font-bold text-primary">USD 1.200 / mes</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Gastos Comunes: $ 4.500</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-3">
+<button class="inline-flex items-center px-6 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined mr-2 text-[18px]">edit</span> Editar Ficha
+                    </button>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 transition-all" type="checkbox"/>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">Enviar ajustes de alquiler automáticos</span>
+</label>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-8">
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Galería de Fotos</h3>
+<button class="text-primary text-sm font-semibold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[18px]">upload</span> Subir Fotos
+                        </button>
+</div>
+<div class="p-5">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="aspect-square rounded-lg overflow-hidden group relative cursor-pointer">
+<img alt="Modern living room interior" class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6lReIZFnSRNxmya3ARRPHDoRFDKbIaPXVlWsfFu2kzqeu97bxTJV8EbU4-U5tZS3DuRoMhONg526KqZorjS97exgOLm58IKht_LLymjG0MJ8SbhfGh25PN8inaluh8MPq4hChTQxUHpw-9HGi3T0S5lO9cOWeK3KSZvCiO8utPPeySW4ZLAU2AerpXzoQ5i-2Nu9zMChQDdENTNYIv40pc_XLaaTq1ZNJXYznPH7IJ_E_fc6FgLlW_dEIJYx30bSXofncZc4QS9v1"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden group relative cursor-pointer">
+<img alt="Modern kitchen interior" class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXPS5DB9de92r9TNZKvX5Fme0Uk-7XZcdiXv-K-gkDtZtAGebwRflPVKpTTiqiLhs7OkbvpFwrlOS_jLTM2Lpcbib1uYkBoTFNZTqlnFvvN_oiwF_k6mAlxWy76Dv47DPttUqgIx4bY75AmFuFZJs-4ykObg-zwEh-cYC81THSu0QY8-jf2bJRYNUwqELjLIVfhBbZxz0409GKk-PZriGhgZrO0sDuRQIWH9-h9br36DKp4lPPNJsjrqgY1lprPrR4c6UsFaDuupuQ"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden group relative cursor-pointer">
+<img alt="Bright master bedroom" class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD0O8nLNSYUYmJv1NqxsuPcs6KDk93gaA_yBABuzRsLtXRI9YIOqKFzrQz8JpIwSvBe3dDnBvL4qw-9yg-W16gne8UfcuR0qHkXsUfA_1YLJIFW42EgRoDYJ-zFWGO1mwNjvYlIJiYAiF1LhINwadcDD8fiagqEjbTVN14Gwh7jS6aikqLxoQWteQ7zRtyAy0W4E4olGin9lq46zmXhWIwFdGoD5Jqqw6D12zjkRIBgqaJaR5Mx7rt8npp0GbCtNzJ5jIpSWGLGvBe"/>
+</div>
+<div class="aspect-square rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center text-slate-400 hover:border-primary hover:text-primary transition-all cursor-pointer bg-slate-50 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-3xl">add_a_photo</span>
+<span class="text-xs font-medium mt-1">Añadir más</span>
+</div>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-2">bed</span>
+<span class="text-xs text-slate-500 uppercase tracking-wider font-bold">Dormitorios</span>
+<span class="text-lg font-bold">2</span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-2">square_foot</span>
+<span class="text-xs text-slate-500 uppercase tracking-wider font-bold">Superficie</span>
+<span class="text-lg font-bold">65 m²</span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-2">bathtub</span>
+<span class="text-xs text-slate-500 uppercase tracking-wider font-bold">Baños</span>
+<span class="text-lg font-bold">1</span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-2">apartment</span>
+<span class="text-xs text-slate-500 uppercase tracking-wider font-bold">Piso</span>
+<span class="text-lg font-bold">4 (Frontal)</span>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800">
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Descripción Comercial</h3>
+</div>
+<div class="p-6">
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Excelente apartamento sobre la calle Juan Benito Blanco, en el corazón de Pocitos. Unidad muy luminosa con orientación norte. Living comedor amplio con ventanal al frente y salida a balcón. Cocina definida con muebles bajo y sobre mesada a estrenar. 
+                            <br/><br/>
+                            Los dos dormitorios cuentan con placares empotrados y pisos de parquet plastificados. El baño fue reciclado íntegramente en 2023. El edificio cuenta con portería 24hs y calefacción central incluida en los gastos comunes. Garantías aceptadas: ANDA, Contaduría o Seguros (Porto, Sura, Mapfre).
+                        </p>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800">
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Publicaciones en Portales</h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Mercado Libre</label>
+<div class="flex">
+<span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</span>
+<input class="flex-1 block w-full rounded-none rounded-r-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" placeholder="Pegar URL de publicación..." type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">InfoCasas</label>
+<div class="flex">
+<span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</span>
+<input class="flex-1 block w-full rounded-none rounded-r-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" placeholder="Pegar URL de publicación..." type="text"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Otros Portales</label>
+<div class="flex">
+<span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined text-[18px]">language</span>
+</span>
+<input class="flex-1 block w-full rounded-none rounded-r-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" placeholder="Ej: Gallito, Propiedades.com.uy..." type="text"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="space-y-8">
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden h-fit">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Histórico de la Propiedad</h3>
+<span class="material-symbols-outlined text-slate-400">history</span>
+</div>
+<div class="p-6 relative timeline-line">
+<div class="relative pl-8 pb-8">
+<div class="absolute left-0 top-1.5 h-4 w-4 rounded-full bg-primary border-4 border-white dark:border-slate-900 z-10 shadow-sm shadow-primary/40"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">15/10/2023</span>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-slate-100 mt-1">Reparación Sanitaria Registrada</h4>
+<p class="text-xs text-slate-500 mt-1 italic">Service de grifería en baño principal y revisión de cañerías por pérdida menor.</p>
+</div>
+</div>
+<div class="relative pl-8 pb-8">
+<div class="absolute left-0 top-1.5 h-4 w-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">01/08/2023</span>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-slate-100 mt-1">Firma de Contrato de Alquiler</h4>
+<p class="text-xs text-slate-500 mt-1">Inquilino: Carlos Méndez. Plazo: 2 años con opción a 1 más. Garantía Sura.</p>
+</div>
+</div>
+<div class="relative pl-8 pb-8">
+<div class="absolute left-0 top-1.5 h-4 w-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">20/07/2023</span>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-slate-100 mt-1">Visita Técnica Previa</h4>
+<p class="text-xs text-slate-500 mt-1">Inspección de entrega y registro fotográfico de estado actual.</p>
+</div>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1.5 h-4 w-4 rounded-full bg-slate-200 dark:bg-slate-800 border-4 border-white dark:border-slate-900 z-10"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">10/07/2023</span>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-slate-100 mt-1">Ingreso al Sistema</h4>
+<p class="text-xs text-slate-500 mt-1">Captación por Admin.</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800">
+<button class="w-full py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+                            Ver historial completo
+                        </button>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800">
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Ubicación</h3>
+</div>
+<div class="aspect-video relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img alt="Vista de calles en Pocitos, Montevideo" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOj3PHeNugv4JqbjTX_NXTQDPzuHLfK_-m9GO-gPJ9w-DvQlXafRfbaebpgLhcpCgSa8sSyarVyEjUpVeeXN01RhMtO2Pu72-SOYLxdSZTKqGGwCGlRXmPjlG4uEAZium5MOhiCNJbhDoOv1ns0TgzpUuOcP1kqjVl4VO7-RkbsCCanMy9p5lM_VJRVsIxuc3NQcx8RTLVUl6tn4kIbUwL3OH2drGAFSHMvkIyeHiahQoJBMK0FmjnzXOeP4jYH51TwRpzHF8nGFhc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="relative">
+<span class="material-symbols-outlined text-primary text-5xl drop-shadow-lg" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-1 bg-black/20 rounded-full blur-sm"></div>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm p-2 rounded text-[10px] font-medium text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                            Pocitos: Zona con excelente conectividad y servicios.
+                        </div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 mt-12 border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-slate-500">© 2024 CRM Inmobiliario Uruguay - Gestión Profesional</p>
+<div class="flex gap-6">
+<a class="text-sm text-slate-500 hover:text-primary" href="#">Soporte</a>
+<a class="text-sm text-slate-500 hover:text-primary" href="#">Privacidad</a>
+<a class="text-sm text-slate-500 hover:text-primary" href="#">Términos</a>
+</div>
+</div>
+</footer>
+
+</body></html>

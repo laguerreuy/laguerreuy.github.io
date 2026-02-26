@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portafolio con Períodos Bloqueados - Uruguay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e293b",
+                        "accent": "#059669",
+                        "background-light": "#f8fafc",
+                        "occupancy-rented": "#10b981",
+                        "occupancy-vacant": "#cbd5e1",
+                        "occupancy-blocked": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+            vertical-align: middle
+        }
+        .gantt-grid {
+            display: grid;
+            grid-template-columns: 280px 160px 120px 1fr;
+            align-items: center;
+        }
+        .timeline-container {
+            display: grid;
+            grid-template-columns: repeat(36, 1fr);
+            height: 28px;
+            gap: 1px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-slate-950 font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col overflow-x-hidden">
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-5 z-30 sticky top-0">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2 text-primary dark:text-white">
+<span class="material-symbols-outlined text-3xl font-bold text-accent">account_balance_wallet</span>
+<h1 class="text-xl font-bold tracking-tight">Portfolio Manager <span class="text-slate-400 font-normal ml-2">| Uruguay</span></h1>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-accent text-sm font-semibold border-b-2 border-accent pb-1" href="#">Vista Portafolio</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-accent transition-colors" href="#">Propiedades</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-accent transition-colors" href="#">Documentos</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right hidden md:block border-r border-slate-200 dark:border-slate-800 pr-6">
+<p class="text-[10px] font-medium text-slate-500 uppercase tracking-widest">Valor Total de Cartera</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">USD 1.450.000</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-bold">Juan Pérez</p>
+<p class="text-[10px] text-slate-500 uppercase">Inversor Premium</p>
+</div>
+<img alt="Perfil" class="size-10 rounded-full object-cover border-2 border-slate-100 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIufUPEB426dENOzj9nP9MHl5jDlWoIhvs-Mjoq2633_9RXm_YrZTnECjDK5X4jgrz_mo350qox4E_9ydrIjNmiWa8pZh1R-DDLA3hO8gIb93Hijqg9zh7kFvSA6sJuixJkYdPnV0WVQqI0jrftcG9vx__JDIIY7q2ZrYvK6QkuOKz_e0FXq5H_j8nWFZDzX-NfzDii36nwqim230Wgia_21l-PMxuACNblxPz0TQ79t2m7-nge2xzntFScuSU7ImK_s9bsMWf4rJ-"/>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1600px] mx-auto p-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">Línea de Tiempo de Portafolio</h2>
+<p class="text-sm text-slate-500">Visualización de ocupación histórica y períodos de mantenimiento 2023 - 2025</p>
+</div>
+<div class="flex items-center gap-6 bg-white dark:bg-slate-900 px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-sm bg-occupancy-rented"></div>
+<span class="text-xs text-slate-600 dark:text-slate-400 font-semibold uppercase tracking-wider">Alquilado</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-sm bg-occupancy-vacant"></div>
+<span class="text-xs text-slate-600 dark:text-slate-400 font-semibold uppercase tracking-wider">Vacante</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-sm bg-occupancy-blocked"></div>
+<span class="text-xs text-slate-600 dark:text-slate-400 font-semibold uppercase tracking-wider">Bloqueado</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="gantt-grid bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 px-8 py-5">
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Inmueble</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Valor Mercado</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">TEA</div>
+<div class="grid grid-cols-3 text-center text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+<div>2023</div>
+<div>2024</div>
+<div>2025 (Proyectado)</div>
+</div>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<div class="gantt-grid px-8 py-6 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex flex-col pr-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Penthouse P. Carretas</span>
+<span class="text-[11px] text-slate-500">Bvar. Artigas, Montevideo</span>
+</div>
+<div class="text-sm font-bold text-slate-700 dark:text-slate-300">USD 425.000</div>
+<div class="text-sm font-bold text-emerald-600">7.2%</div>
+<div class="timeline-container">
+<div class="col-span-12 bg-occupancy-rented rounded-l-sm"></div>
+<div class="col-span-12 bg-occupancy-rented"></div>
+<div class="col-span-10 bg-occupancy-rented"></div>
+<div class="col-span-2 bg-occupancy-vacant rounded-r-sm"></div>
+</div>
+</div>
+<div class="gantt-grid px-8 py-6 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex flex-col pr-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Casa Malvín</span>
+<span class="text-[11px] text-slate-500">Rambla O'Higgins, Montevideo</span>
+</div>
+<div class="text-sm font-bold text-slate-700 dark:text-slate-300">USD 580.000</div>
+<div class="text-sm font-bold text-emerald-600">6.5%</div>
+<div class="timeline-container">
+<div class="col-span-3 bg-occupancy-blocked rounded-l-sm"></div> 
+<div class="col-span-9 bg-occupancy-rented"></div>
+<div class="col-span-12 bg-occupancy-rented"></div>
+<div class="col-span-12 bg-occupancy-rented rounded-r-sm"></div>
+</div>
+</div>
+<div class="gantt-grid px-8 py-6 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex flex-col pr-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Local Centro</span>
+<span class="text-[11px] text-slate-500">Av. 18 de Julio, Montevideo</span>
+</div>
+<div class="text-sm font-bold text-slate-700 dark:text-slate-300">USD 215.000</div>
+<div class="text-sm font-bold text-emerald-600">8.1%</div>
+<div class="timeline-container">
+<div class="col-span-36 bg-occupancy-rented rounded-sm"></div>
+</div>
+</div>
+<div class="gantt-grid px-8 py-6 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex flex-col pr-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Apto. Pocitos</span>
+<span class="text-[11px] text-slate-500">Benito Blanco, Montevideo</span>
+</div>
+<div class="text-sm font-bold text-slate-700 dark:text-slate-300">USD 230.000</div>
+<div class="text-sm font-bold text-emerald-600">6.9%</div>
+<div class="timeline-container">
+<div class="col-span-12 bg-occupancy-rented rounded-l-sm"></div>
+<div class="col-span-5 bg-occupancy-rented"></div>
+<div class="col-span-2 bg-occupancy-blocked"></div> 
+<div class="col-span-5 bg-occupancy-rented"></div>
+<div class="col-span-12 bg-occupancy-rented rounded-r-sm"></div>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 px-8 py-5 flex items-center justify-between">
+<div class="flex gap-10">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Ocupación Media</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">96.2%</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">TEA Promedio</span>
+<span class="text-lg font-bold text-accent">7.18%</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Activos</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">4 Unidades</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="py-2.5 px-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Exportar Datos
+                </button>
+<div class="text-[11px] font-medium text-slate-400 italic">
+                    Actualizado: hoy, 09:42 AM
+                </div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

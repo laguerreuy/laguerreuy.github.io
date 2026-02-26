@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solicitud de Garantía - Datos de Inquilinos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-20 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary size-8">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Garantía Alquiler Uruguay</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Inicio</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Mis Solicitudes</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Ayuda</a>
+</nav>
+<div class="bg-primary/10 rounded-full p-1 border border-primary/20">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Avatar circular del usuario solicitante" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCObPLDa7QKGbxLaTQMbQSQbJYoMnIvVxxtDmJGaMfyNHPgcTDVxiapdFKBZv2EGfY_xlruoiTSLyTD7YvwwxG-ERFHhY_a8xx7JFt7vhOce901w9i8NHa1QS0VigDJeSryIKoOciVifBR5z0HtxsoZtRyNxgs3PY0zQWyYWJxZbrmiswKYQ-Hd8MNxKJHoSNGsa9egof9QI5eATOTIG9ixFsWJN8O2D3YO2CYPia9XLERSwvyEgiX4v06CtFynzhxX3xKtVI8-_4F0");'></div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col max-w-[1000px] flex-1 px-4 md:px-10">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap items-center gap-2 mb-6">
+<a class="text-primary text-sm font-medium" href="#">Solicitud</a>
+<span class="material-symbols-outlined text-slate-400 text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Datos de Inquilinos</span>
+<span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+<span class="text-slate-400 text-sm font-normal">Validación Final</span>
+</div>
+<!-- Header Section -->
+<div class="mb-10">
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-[-0.033em] mb-2">Datos de los Inquilinos</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl">Complete la información de todos los solicitantes para validar la garantía. El ingreso total debe ser al menos 3 veces el valor del alquiler.</p>
+</div>
+<!-- Solicitante Form Card -->
+<div class="space-y-8">
+<!-- Primer Solicitante -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 md:p-8 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold flex items-center gap-2">
+<span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                                    Primer Solicitante
+                                </h2>
+<span class="text-primary text-sm font-medium bg-primary/10 px-3 py-1 rounded-full">Titular</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<!-- Personal Data Section -->
+<div class="space-y-6">
+<h3 class="text-slate-900 dark:text-slate-100 font-semibold border-b border-slate-100 dark:border-slate-800 pb-2">Información Personal</h3>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex flex-col">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2">Nombre</span>
+<input class="form-input rounded-lg border-slate-300 dark:border-slate-700 bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-12 text-sm" placeholder="Ej: Juan" type="text"/>
+</label>
+<label class="flex flex-col">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2">Apellido</span>
+<input class="form-input rounded-lg border-slate-300 dark:border-slate-700 bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-12 text-sm" placeholder="Ej: Pérez" type="text"/>
+</label>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex flex-col">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2">Cédula de Identidad</span>
+<input class="form-input rounded-lg border-slate-300 dark:border-slate-700 bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-12 text-sm" placeholder="1.234.567-8" type="text"/>
+</label>
+<label class="flex flex-col">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2">Estado Civil</span>
+<select class="form-select rounded-lg border-slate-300 dark:border-slate-700 bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-12 text-sm">
+<option>Soltero/a</option>
+<option>Casado/a</option>
+<option>Divorciado/a</option>
+<option>Viudo/a</option>
+</select>
+</label>
+</div>
+<div class="mt-4">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-3 block">Documento de Identidad (Frente y Dorso)</span>
+<div class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg p-6 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-3xl mb-2">add_a_photo</span>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Haga clic o arrastre las fotos de su CI</p>
+</div>
+</div>
+</div>
+<!-- Financial Data Section -->
+<div class="space-y-6">
+<h3 class="text-slate-900 dark:text-slate-100 font-semibold border-b border-slate-100 dark:border-slate-800 pb-2">Información Laboral</h3>
+<label class="flex flex-col">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2">Monto Líquido Mensual (UYU)</span>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">$</span>
+<input class="form-input rounded-lg border-slate-300 dark:border-slate-700 bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-12 text-sm pl-8 w-full" placeholder="0.00" type="number"/>
+</div>
+</label>
+<label class="flex flex-col">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2">Fecha de Ingreso Laboral</span>
+<input class="form-input rounded-lg border-slate-300 dark:border-slate-700 bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-12 text-sm" type="date"/>
+</label>
+<div class="mt-4">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-3 block">Recibo de Sueldo (Último mes)</span>
+<div class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg p-6 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-3xl mb-2">upload_file</span>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Subir PDF o Imagen del recibo</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Another Applicant Button -->
+<button class="w-full py-4 border-2 border-dashed border-primary/30 rounded-xl text-primary font-bold flex items-center justify-center gap-2 hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined">person_add</span>
+                            Agregar otro solicitante
+                        </button>
+</div>
+<!-- Summary & Verification Panel -->
+<div class="mt-12 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+<div class="space-y-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Alquiler estimado</p>
+<p class="text-2xl font-black text-slate-900 dark:text-slate-100">$ 30.000 <span class="text-xs text-slate-400 font-normal">UYU/mes</span></p>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Suma de ingresos líquidos</p>
+<p class="text-slate-400 text-xs">Requerido: $ 90.000</p>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+<!-- Dynamic Progress Bar: Set width based on income. Here showing 45% as example -->
+<div class="bg-primary h-full w-[45%] transition-all duration-500"></div>
+</div>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="text-lg">$ 42.000</span>
+<span class="text-xs font-normal text-slate-500">(Faltan $ 48.000)</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Tooltip/Info for disabled state -->
+<div class="flex items-center gap-2 text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-3 py-2 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm">info</span>
+                                    Faltan ingresos para habilitar el envío
+                                </div>
+<!-- Button Disabled State -->
+<button class="w-full bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-600 font-bold py-4 rounded-lg cursor-not-allowed flex items-center justify-center gap-2">
+                                    Enviar a validación
+                                    <span class="material-symbols-outlined">send</span>
+</button>
+<!-- To enable: bg-primary text-white hover:opacity-90 transition-opacity cursor-pointer -->
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="px-6 md:px-20 py-10 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-slate-400 text-xs">© 2024 Garantía Alquiler Uruguay. Sistema de validación oficial para arrendamientos.</p>
+</footer>
+</div>
+</div>
+</body></html>

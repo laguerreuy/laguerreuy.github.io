@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Control de Rentas con Estados de Pago</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">domain</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Portal Propietario</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-900 dark:text-slate-200 text-sm font-semibold border-b-2 border-primary pb-1" href="#">Propiedades</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Reportes</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Documentos</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex flex-col items-end">
+<p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Uruguay CRM</p>
+<p class="text-sm font-semibold">Admin Panel</p>
+</div>
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-red-500"></span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary/20 border-2 border-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="Foto de perfil del usuario administrador" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpzU02ghZmR2vhofq7VXHxumFvpJ1k_3EfQXQ240S9vQyHb0e_6LaW68im8Xobd0qRAcdn2X3BY_hA3pMXa-A_8osh6YZewFIH_1ftOwlqsvFXi3VovFM-6sw0Jd5KXTCchsVKg7BRQHSEoHRgXEC_tI05Kr2DONVeQPCQ88DVQ6dmaMyr9SKwI8w1_Hv_ULUccEYSp_80lFAZUeuruAG_jvdGexQmzeKnNdnvJeHhUpQ74tHViNYopJfLAGmnLUoxoL62reQIXQGG"/>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col lg:flex-row max-w-[1440px] mx-auto w-full p-4 lg:p-8 gap-8">
+<aside class="w-full lg:w-80 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">Mis Propiedades</h3>
+<span class="text-xs font-bold px-2 py-1 bg-primary/10 text-primary rounded-full">3 Activas</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-primary shadow-sm cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary px-2 py-0.5 bg-primary/10 rounded">Alquilada</span>
+<span class="text-xs text-slate-400 font-mono">ID: 4829</span>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white leading-tight">Bulevar Artigas 1245, Apto 402</h4>
+<p class="text-xs text-slate-500 mt-1">Montevideo, Uruguay</p>
+<div class="mt-3 flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded w-fit">
+<span class="material-symbols-outlined text-[14px] font-bold">check_circle</span>
+                                ALQUILER: AL DÍA
+                            </div>
+<div class="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded w-fit">
+<span class="material-symbols-outlined text-[14px] font-bold">check_circle</span>
+                                OTROS: AL DÍA
+                            </div>
+</div>
+<div class="mt-4 flex justify-between items-center text-sm font-semibold">
+<span class="text-slate-700 dark:text-slate-300">UYU 28.500</span>
+<span class="material-symbols-outlined text-primary">arrow_forward_ios</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-primary/50 cursor-pointer transition-all group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Alquilada</span>
+<span class="text-xs text-slate-400 font-mono">ID: 5102</span>
+</div>
+<h4 class="font-bold text-slate-700 dark:text-slate-200 leading-tight group-hover:text-primary transition-colors">Calle Canelones 890, Casa 2</h4>
+<p class="text-xs text-slate-500 mt-1">Canelones, Uruguay</p>
+<div class="mt-3 flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded w-fit">
+<span class="material-symbols-outlined text-[14px] font-bold">check_circle</span>
+                                ALQUILER: AL DÍA
+                            </div>
+<div class="flex items-center gap-1.5 text-[10px] font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded w-fit">
+<span class="material-symbols-outlined text-[14px] font-bold">error</span>
+                                OTROS: 1 ATRASO
+                            </div>
+</div>
+<div class="mt-4 flex justify-between items-center text-sm font-semibold">
+<span class="text-slate-500 dark:text-slate-400">USD 1.200</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-3 mt-4 rounded-lg bg-white dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold text-sm hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-lg">person_edit</span>
+                    Editar Datos Personales
+                </button>
+</aside>
+<div class="flex-1 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<nav class="flex items-center gap-2 text-xs text-slate-400 font-bold uppercase tracking-wider mb-2">
+<span class="hover:text-primary cursor-pointer transition-colors">PROPIEDADES</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-800 dark:text-slate-200">BV. ARTIGAS 1245</span>
+</nav>
+<h2 class="text-2xl font-black text-slate-900 dark:text-white">Bulevar Artigas 1245, Apto 402</h2>
+</div>
+<div class="flex items-center gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-900/40 p-4 rounded-xl">
+<div class="bg-amber-500/20 text-amber-600 p-2 rounded-lg">
+<span class="material-symbols-outlined">event_repeat</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Próximo Ajuste</p>
+<p class="text-sm font-bold text-slate-800 dark:text-amber-100">15 de Mayo, 2024 <span class="font-normal text-xs">(IPC)</span></p>
+</div>
+</div>
+</div>
+<div class="mt-8 border-b border-slate-100 dark:border-slate-800 flex gap-4 md:gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
+<button class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">description</span>
+                            Contrato
+                        </button>
+<button class="pb-3 border-b-2 border-primary text-slate-900 dark:text-white text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">info</span>
+                            Inmueble
+                        </button>
+<button class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+<span>Cuenta Corriente</span>
+<span class="size-2 rounded-full bg-emerald-500"></span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<span>Otras Obligaciones</span>
+<span class="size-2 rounded-full bg-amber-500"></span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+<div class="flex flex-col gap-8">
+<div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-xl border border-slate-100 dark:border-slate-800">
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-base">corporate_fare</span>
+                                    Administración del Edificio
+                                </h4>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-bold text-slate-800 dark:text-white text-lg">Adm. Horizonte</p>
+<p class="text-xs text-slate-500 mt-1">Horario: Lunes a Viernes 10:00 a 18:00 hs</p>
+</div>
+<a class="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg text-sm font-bold transition-all shadow-md shadow-emerald-500/10" href="tel:29001234">
+<span class="material-symbols-outlined text-base">call</span>
+                                        2900 1234
+                                    </a>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-5">Servicios y Suministros</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-yellow-600">bolt</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-100">UTE (Energía)</p>
+<p class="text-xs text-slate-400 font-mono mt-0.5">Cta: 012345678-9</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-blue-600">water_drop</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-100">OSE (Agua)</p>
+<p class="text-xs text-slate-400 font-mono mt-0.5">Cta: 99887766</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-cyan-50 dark:bg-cyan-900/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-cyan-600">router</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-100">ANTEL (Fibra)</p>
+<p class="text-xs text-slate-400 font-mono mt-0.5">Cta: 11223344</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-slate-50 dark:bg-slate-800/40 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-slate-600">door_front</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-100">Impuesto de Puerta</p>
+<p class="text-xs text-slate-400 font-mono mt-0.5">Cta: 88776655-4</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+<div class="flex items-center justify-between mb-5">
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Inventario Actual</h4>
+<button class="text-[11px] text-primary font-bold hover:underline transition-all">VER PLANILLA PDF</button>
+</div>
+<div class="flex flex-col gap-2">
+<textarea class="w-full min-h-[140px] p-4 text-sm bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary text-slate-700 dark:text-slate-300 placeholder:text-slate-400 leading-relaxed" placeholder="Describa detalladamente el inventario de la propiedad (muebles, electrodomésticos, estado de las paredes, etc.)...">El apartamento cuenta con aire acondicionado de 12.000 BTU en el dormitorio principal, cocina vitrocerámica Samsung, mesa de comedor de madera con 4 sillas, y mampara de vidrio templado en el baño. Todas las aberturas cuentan con cortina de enrollar en perfecto estado.</textarea>
+<p class="text-[10px] text-slate-400 italic">Este inventario es visible para el inquilino al momento de la firma.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col shadow-sm overflow-hidden flex-1 min-h-[300px]">
+<div class="p-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50/30 dark:bg-slate-800/20">
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-base">edit_note</span>
+                                        Notas para el Inquilino
+                                    </h4>
+<div class="flex items-center gap-2">
+<button class="bg-primary/10 text-primary p-1.5 rounded-lg hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">save</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col flex-1 p-0 overflow-hidden">
+<div class="flex gap-1 p-3 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+<button class="w-8 h-8 rounded hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="w-8 h-8 rounded hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="w-8 h-8 rounded hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+</div>
+<textarea class="flex-1 w-full p-4 resize-none bg-transparent border-none focus:ring-0 text-sm leading-relaxed text-slate-700 dark:text-slate-300 placeholder:text-slate-400" placeholder="Escribe aquí consejos sobre la casa, ubicación de llaves de paso, días de basura, etc...">Bienvenido al apartamento. 
+1. La llave de paso general del agua se encuentra detrás de la puerta del baño social.
+2. El contenedor de reciclaje más cercano está a la vuelta sobre Av. Rivera.
+3. El garage es el número 402, nivel -1.</textarea>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+<button class="px-4 py-2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest rounded-lg shadow-lg shadow-primary/20 hover:bg-blue-600 transition-all">
+                                        Publicar
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="p-8 mt-auto border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest">Uruguay CRM Inmobiliario - Sistema de Gestión de Rentas Profesional</p>
+</footer>
+</div>
+</div>
+
+</body></html>

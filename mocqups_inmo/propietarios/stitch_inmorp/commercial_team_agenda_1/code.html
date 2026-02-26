@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agenda por Disponibilidad de Propiedad - CRM Inmobiliario Uruguay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "agent-blue": "#dbeafe",
+                        "agent-blue-border": "#3b82f6",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+            vertical-align: middle
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(7, 1fr)
+        }
+        .availability-slot {
+            @apply border border-dashed border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/20 rounded-md m-1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased h-screen flex flex-col overflow-hidden">
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 z-30">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">domain</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">CRM Uruguay</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Disponibilidad</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Propiedades</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Contratos</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Prospectos</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Buscar en la agenda..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:border-slate-700 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-slate-900 dark:text-slate-100">Alex Rivers</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Administrador</p>
+</div>
+<img alt="Perfil" class="size-9 rounded-full object-cover border border-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIufUPEB426dENOzj9nP9MHl5jDlWoIhvs-Mjoq2633_9RXm_YrZTnECjDK5X4jgrz_mo350qox4E_9ydrIjNmiWa8pZh1R-DDLA3hO8gIb93Hijqg9zh7kFvSA6sJuixJkYdPnV0WVQqI0jrftcG9vx__JDIIY7q2ZrYvK6QkuOKz_e0FXq5H_j8nWFZDzX-NfzDii36nwqim230Wgia_21l-PMxuACNblxPz0TQ79t2m7-nge2xzntFScuSU7ImK_s9bsMWf4rJ-"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col py-6 px-4 gap-6 overflow-y-auto">
+<div class="flex flex-col gap-1">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest px-2 mb-3">Propiedades</h3>
+<div class="relative px-2 mb-4">
+<span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-9 pr-3 py-2 text-xs focus:ring-1 focus:ring-primary" placeholder="Buscar propiedad..." type="text"/>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="px-3 py-2 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer group flex items-center gap-2">
+<div class="size-2 rounded-full bg-slate-300"></div>
+<p class="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Ap. Pocitos</p>
+</div>
+<div class="px-3 py-2 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer group flex items-center gap-2">
+<div class="size-2 rounded-full bg-slate-300"></div>
+<p class="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Casa Malvín</p>
+</div>
+<div class="px-3 py-2 rounded-md bg-primary/5 dark:bg-primary/10 border-l-2 border-primary cursor-pointer group flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<p class="text-xs font-bold text-primary">Penthouse P. Carretas</p>
+</div>
+<div class="px-3 py-2 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer group flex items-center gap-2">
+<div class="size-2 rounded-full bg-slate-300"></div>
+<p class="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Loft Prado</p>
+</div>
+<div class="px-3 py-2 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer group flex items-center gap-2">
+<div class="size-2 rounded-full bg-slate-300"></div>
+<p class="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Local Centro</p>
+</div>
+</div>
+</div>
+<div class="mt-auto border-t border-slate-100 dark:border-slate-800 pt-6">
+<div class="p-4 rounded-xl bg-primary/5 border border-primary/10">
+<p class="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">Resumen Disponibilidad</p>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100">12</p>
+<p class="text-[10px] text-slate-500 font-medium">Huecos esta semana</p>
+</div>
+<span class="material-symbols-outlined text-primary">event_available</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100 leading-tight">Octubre 23 – 29, 2023</h1>
+<p class="text-sm text-slate-500 font-medium">Disponibilidad para: Penthouse P. Carretas</p>
+</div>
+<div class="flex border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden h-9">
+<button class="px-2 hover:bg-slate-50 dark:hover:bg-slate-800 border-r border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="text-xs font-bold px-4 hover:bg-slate-50 dark:hover:bg-slate-800 border-r border-slate-200 dark:border-slate-700">Hoy</button>
+<button class="px-2 hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+<button class="px-4 py-1.5 rounded-md text-xs font-bold bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-slate-100">Semana</button>
+<button class="px-4 py-1.5 rounded-md text-xs font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Mes</button>
+<button class="px-4 py-1.5 rounded-md text-xs font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Día</button>
+</div>
+<button class="bg-primary text-white text-sm font-bold px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-xl">add</span>
+                    Agendar Visita
+                </button>
+</div>
+</div>
+<div class="flex-1 overflow-auto relative bg-white dark:bg-slate-900">
+<div class="calendar-grid border-b border-slate-200 dark:border-slate-800 sticky top-0 bg-white dark:bg-slate-900 z-10">
+<div class="h-12 border-r border-slate-200 dark:border-slate-800"></div>
+<div class="h-12 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center">
+<span class="text-[10px] uppercase font-bold text-slate-400">Lun</span>
+<span class="text-sm font-bold">23</span>
+</div>
+<div class="h-12 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center">
+<span class="text-[10px] uppercase font-bold text-slate-400">Mar</span>
+<span class="text-sm font-bold">24</span>
+</div>
+<div class="h-12 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center bg-primary/5">
+<span class="text-[10px] uppercase font-bold text-primary">Mié</span>
+<span class="text-sm font-bold text-primary">25</span>
+</div>
+<div class="h-12 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center">
+<span class="text-[10px] uppercase font-bold text-slate-400">Jue</span>
+<span class="text-sm font-bold">26</span>
+</div>
+<div class="h-12 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center">
+<span class="text-[10px] uppercase font-bold text-slate-400">Vie</span>
+<span class="text-sm font-bold">27</span>
+</div>
+<div class="h-12 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-800/50">
+<span class="text-[10px] uppercase font-bold text-slate-400">Sáb</span>
+<span class="text-sm font-bold">28</span>
+</div>
+<div class="h-12 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-800/50">
+<span class="text-[10px] uppercase font-bold text-slate-400">Dom</span>
+<span class="text-sm font-bold">29</span>
+</div>
+</div>
+<div class="relative min-h-full">
+<div class="absolute inset-0 pointer-events-none">
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="h-16 border-b border-slate-100 dark:border-slate-800/50"></div>
+</div>
+<div class="calendar-grid">
+<div class="flex flex-col text-[10px] text-slate-400 font-bold uppercase">
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">08:00 AM</div>
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">09:00 AM</div>
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">10:00 AM</div>
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">11:00 AM</div>
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">12:00 PM</div>
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">01:00 PM</div>
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">02:00 PM</div>
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">03:00 PM</div>
+<div class="h-16 flex items-center justify-center border-r border-slate-200 dark:border-slate-800">04:00 PM</div>
+</div>
+<div class="relative border-r border-slate-200 dark:border-slate-800">
+<div class="absolute top-[0px] left-0 right-0 h-[192px] availability-slot flex flex-col items-center justify-center gap-1 opacity-60">
+<span class="text-[9px] font-bold text-slate-400 uppercase">Disponible</span>
+</div>
+</div>
+<div class="relative border-r border-slate-200 dark:border-slate-800">
+<div class="absolute top-[256px] left-0 right-0 h-[128px] availability-slot flex flex-col items-center justify-center gap-1">
+<span class="text-[9px] font-bold text-slate-400 uppercase">Disponible</span>
+</div>
+</div>
+<div class="relative border-r border-slate-200 dark:border-slate-800 bg-primary/5">
+<div class="absolute top-[64px] left-0 right-0 h-[64px] availability-slot"></div>
+<div class="absolute top-[128px] left-1 right-1 h-28 bg-white dark:bg-slate-800 border-l-4 border-agent-blue-border rounded-lg p-3 cursor-pointer shadow-lg ring-2 ring-primary z-30">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[10px] font-bold text-blue-700 uppercase">10:00 AM</p>
+<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+</div>
+<p class="text-xs font-extrabold text-slate-900 dark:text-slate-100 leading-tight">Visita Confirmada</p>
+<div class="flex items-center gap-1.5 mt-2">
+<img alt="Prospecto" class="size-4 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCmajSfEaus64Jt5dqieI6DUx90qpzyZJNy2qa1lpH7i11TK8PhLfoasbtdV2btuPRbZP72Wr7piLOVt4Cq3h2w3di6Ff6WKQnEdD5PdeyZL0ImLIx-1CspPc8hQj943nfmpcLkMD01y0zaH52MhRLjvPMDPPCvI4n4UJphI3C3mr_VauwoI5lY65IYaJn3r_l4EYjfSGw9W3qmaARlMWSnvHKj8mvlIKAhHNpYtcn5jsur88Nf_s1lqAjbdnCCqpIULr-yavyvu6v"/>
+<p class="text-[10px] text-slate-500 font-medium">David Chen</p>
+</div>
+</div>
+<div class="absolute top-[320px] left-0 right-0 h-[128px] availability-slot"></div>
+</div>
+<div class="relative border-r border-slate-200 dark:border-slate-800">
+<div class="absolute top-[64px] left-0 right-0 h-[256px] availability-slot flex flex-col items-center justify-center gap-1">
+<span class="text-[9px] font-bold text-slate-400 uppercase">Disponible</span>
+</div>
+</div>
+<div class="relative border-r border-slate-200 dark:border-slate-800">
+<div class="absolute top-[0px] left-0 right-0 h-[128px] availability-slot"></div>
+<div class="absolute top-[128px] left-1 right-1 h-14 bg-agent-blue border-l-4 border-agent-blue-border rounded-lg p-2 cursor-pointer hover:brightness-95 transition-all z-20">
+<p class="text-[10px] font-bold text-blue-700 truncate uppercase">10:00 AM</p>
+<p class="text-xs font-bold text-slate-900 truncate">Pendiente</p>
+</div>
+<div class="absolute top-[256px] left-0 right-0 h-[128px] availability-slot"></div>
+</div>
+<div class="relative border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
+<div class="absolute top-[64px] left-0 right-0 h-[128px] availability-slot"></div>
+</div>
+<div class="relative bg-slate-50 dark:bg-slate-800/50">
+</div>
+</div>
+</div>
+</div>
+</main>
+<aside class="w-[400px] border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col z-40 shadow-2xl overflow-y-auto">
+<div class="p-6 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100">Detalles de la Visita</h2>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between bg-green-50 dark:bg-green-900/10 px-4 py-2 rounded-lg border border-green-100 dark:border-green-900/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-500 text-lg">verified_user</span>
+<span class="text-[10px] font-extrabold text-green-700 dark:text-green-400 uppercase tracking-wider">CONFIRMADO POR WHATSAPP</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Venta</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ID: #PC-1240</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">Penthouse Punta Carretas</h3>
+<p class="text-sm text-slate-500 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                        Bvar. Artigas 1240, Punta Carretas
+                    </p>
+</div>
+</div>
+<div class="h-px bg-slate-100 dark:bg-slate-800"></div>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex flex-col gap-1.5 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">INTERESADO</span>
+<div class="flex items-center gap-3 mt-1">
+<img alt="David Chen" class="size-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2UGjWdLHRpjRcMKNBrTiHtMUBGipuR0SqsKnNY2olbL71Mq6XEafX0TZI0APK51hWaHnZC6jDmlpHambWAdT4UmlM1rc2ljc19ETamvqYXXJ_xdEsIG6kLGTbOJg5bvGENyCTE-QzZmq2392JCbUXqoXoTcnxJyikg-DMnhGPUYJ8tqgfBiNdHtkWkZfTReNdGybZCxoPwGbmUXr_OrvGUBkWurIprFzm0LeO6y_ZyPNwWE9tKtsNKWzzWyW7sTKDAXzEQuiwIgTm"/>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">David Chen</p>
+<p class="text-xs text-slate-500">Inversor • Primera visita</p>
+</div>
+<button class="ml-auto p-2 text-green-600 bg-green-50 dark:bg-green-900/20 rounded-lg">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-1.5 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">PROPIETARIO</span>
+<div class="flex items-center gap-3 mt-1">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500">person</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Roberto Martínez</p>
+<p class="text-xs text-slate-500">Posee llaves en portería</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">NOTAS DE LA PROPIEDAD</span>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-dashed border-slate-200 dark:border-slate-700">
+                    Propiedad desocupada. Los horarios de visita están restringidos por el reglamento del edificio hasta las 18:00hs. Se debe anunciar en recepción.
+                </p>
+</div>
+<div class="flex flex-col gap-3 mt-4">
+<button class="w-full bg-primary text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/90 transition-shadow shadow-lg shadow-primary/20">
+                    Finalizar y Enviar Reporte
+                </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+                        Modificar
+                    </button>
+<button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-red-500 font-bold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">
+<span class="material-symbols-outlined text-lg">cancel</span>
+                        Anular
+                    </button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+
+</body></html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal del Propietario - Valoración Detallada de Inversión y Costos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">domain</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Portal Propietario</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-900 dark:text-slate-200 text-sm font-semibold border-b-2 border-primary pb-1" href="#">Propiedades</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Reportes</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Documentos</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex flex-col items-end">
+<p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Uruguay CRM</p>
+<p class="text-sm font-semibold">Admin Panel</p>
+</div>
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-red-500"></span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary/20 border-2 border-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="Foto de perfil del usuario administrador" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAULyM00MgGtltDENTilOgdr3TqK9yRb1VoleS2uWVPUis8zupgUKXVN_el1nMn30xGS6rPP3tMTgSStzMJVKFAkEMx_nvU_29bhbAIHu3CwMMFlr-UZ0vGQbY-DxkbFs5AkJc_LYVMgRzMsSWInKIH4JLtcyHFUVHW6dT3-1PUcZ8p0iezQBP5SYVU54ZvBE-OqyZ4iF6WLEljdlmmdGx86b9_ezrNMjDQW02i26ZCv0zxHdY6B2d-dUKysHJrbRuoHi20cP9r-My_"/>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col lg:flex-row max-w-[1440px] mx-auto w-full p-4 lg:p-8 gap-8">
+<aside class="w-full lg:w-80 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">Mis Propiedades</h3>
+<span class="text-xs font-bold px-2 py-1 bg-primary/10 text-primary rounded-full">3 Activas</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-primary shadow-sm cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary px-2 py-0.5 bg-primary/10 rounded">Alquilada</span>
+<span class="text-xs text-slate-400 font-mono">ID: 4829</span>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white leading-tight">Bulevar Artigas 1245, Apto 402</h4>
+<p class="text-xs text-slate-500 mt-1">Montevideo, Uruguay</p>
+<div class="mt-4 flex justify-between items-center text-sm font-semibold">
+<span class="text-slate-700 dark:text-slate-300">UYU 28.500</span>
+<span class="material-symbols-outlined text-primary">arrow_forward_ios</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-primary/50 cursor-pointer transition-all group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Alquilada</span>
+<span class="text-xs text-slate-400 font-mono">ID: 5102</span>
+</div>
+<h4 class="font-bold text-slate-700 dark:text-slate-200 leading-tight group-hover:text-primary transition-colors">Calle Canelones 890, Casa 2</h4>
+<p class="text-xs text-slate-500 mt-1">Canelones, Uruguay</p>
+<div class="mt-4 flex justify-between items-center text-sm font-semibold">
+<span class="text-slate-500 dark:text-slate-400">USD 1.200</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 opacity-60">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-emerald-600 px-2 py-0.5 bg-emerald-50 rounded">Vacante</span>
+</div>
+<h4 class="font-bold text-slate-700 dark:text-slate-200 leading-tight">Av. Roosevelt P. 12</h4>
+<p class="text-xs text-slate-500 mt-1">Punta del Este, Uruguay</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-3 mt-4 rounded-lg bg-white dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold text-sm hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-lg">person_edit</span>
+                    Editar Datos Personales
+                </button>
+</aside>
+<div class="flex-1 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<nav class="flex items-center gap-2 text-xs text-slate-400 font-bold uppercase tracking-wider mb-2">
+<span class="hover:text-primary cursor-pointer transition-colors">PROPIEDADES</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-800 dark:text-slate-200">BV. ARTIGAS 1245</span>
+</nav>
+<h2 class="text-2xl font-black text-slate-900 dark:text-white">Bulevar Artigas 1245, Apto 402</h2>
+</div>
+<div class="flex items-center gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-900/40 p-4 rounded-xl">
+<div class="bg-amber-500/20 text-amber-600 p-2 rounded-lg">
+<span class="material-symbols-outlined">event_repeat</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Próximo Ajuste</p>
+<p class="text-sm font-bold text-slate-800 dark:text-amber-100">15 de Mayo, 2024 <span class="font-normal">(IPC)</span></p>
+</div>
+</div>
+</div>
+<div class="mt-8 border-b border-slate-100 dark:border-slate-800 flex gap-8">
+<button class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">description</span>
+                            Información del Contrato
+                        </button>
+<button class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">person</span>
+                            Inquilino
+                        </button>
+<button class="pb-3 border-b-2 border-primary text-slate-900 dark:text-white text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">analytics</span>
+                            Valoración de la inversión
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-6">
+<div class="space-y-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Monto Mensual</p>
+<p class="text-xl font-black text-primary">UYU 28.500</p>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Vigencia</p>
+<p class="text-sm font-bold">12 meses (Mar 2024 - Mar 2025)</p>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Inquilino Actual</p>
+<p class="text-sm font-bold flex items-center gap-2">
+                                    Roberto Carlos García 
+                                    <span class="material-symbols-outlined text-xs text-primary bg-primary/10 rounded-full p-0.5">verified_user</span>
+</p>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Garantía</p>
+<p class="text-sm font-bold px-2 py-0.5 bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-200 inline-block rounded">Póliza PORTO SEGURO</p>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Estado de cuenta</p>
+<p class="text-sm font-bold text-emerald-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+                                    Al día
+                                </p>
+</div>
+<button class="text-primary text-sm font-bold hover:underline flex items-center gap-1">
+                                Ver contrato digital
+                                <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/20">
+<h3 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+                            Valoración de la inversión
+                        </h3>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-primary/5 rounded-lg border border-primary/20">
+<span class="text-xs font-bold text-slate-500 uppercase">Moneda:</span>
+<span class="text-xs font-black text-primary">UYU / USD</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-slate-800">
+<div class="p-8 flex flex-col justify-center bg-primary/5">
+<p class="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-1">TEA de la inversión</p>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black text-primary">7.2</span>
+<span class="text-xl font-bold text-primary">%</span>
+</div>
+<p class="text-xs text-slate-500 mt-2 font-medium">Rentabilidad anual neta estimada</p>
+</div>
+<div class="p-8 space-y-8">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Costo total de compra</p>
+<div class="space-y-1">
+<p class="text-lg font-bold text-slate-800 dark:text-white">USD 145.000</p>
+<p class="text-xs text-slate-500">UYU 5.727.500</p>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Ocupación</p>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-sm font-black text-slate-700 dark:text-slate-200">96.5%</p>
+<p class="text-[9px] font-bold text-slate-400 uppercase">Histórico</p>
+</div>
+<div>
+<p class="text-sm font-black text-emerald-600">100%</p>
+<p class="text-[9px] font-bold text-slate-400 uppercase">24 meses</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-8">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Ingresos Acumulados</p>
+<div class="space-y-6">
+<div>
+<p class="text-lg font-black text-slate-800 dark:text-white">UYU 1.452.000</p>
+<p class="text-[10px] font-bold text-slate-500 uppercase mt-1">Total histórico</p>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-base font-bold text-slate-700 dark:text-slate-300">UYU 684.000</p>
+<p class="text-[10px] font-bold text-slate-500 uppercase mt-1">Últimos 24 meses</p>
+</div>
+</div>
+</div>
+<div class="p-8">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Costos del Propietario</p>
+<div class="space-y-6">
+<div>
+<p class="text-lg font-black text-slate-800 dark:text-white">UYU 182.400</p>
+<p class="text-[10px] font-bold text-slate-500 uppercase mt-1">Total histórico</p>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-base font-bold text-slate-700 dark:text-slate-300">UYU 76.500</p>
+<p class="text-[10px] font-bold text-slate-500 uppercase mt-1">Últimos 24 meses</p>
+</div>
+<div class="pt-4 space-y-3">
+<div class="flex flex-col gap-1">
+<p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Costos recurrentes</p>
+<p class="text-sm font-semibold text-slate-500 dark:text-slate-400">UYU 3.200 / mes</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Costo inmueble vacío</p>
+<p class="text-sm font-semibold text-slate-500 dark:text-slate-400">UYU 5.800 / mes</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center px-8">
+<p class="text-xs text-slate-500 italic">Los costos incluyen: Contribución Inmobiliaria, Impuesto Primaria, y comisiones de administración.</p>
+<button class="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                            Descargar informe detallado
+                            <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="p-8 mt-auto border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-xs text-slate-400 font-medium">Uruguay CRM Inmobiliario - Sistema de Gestión de Rentas Profesional</p>
+</footer>
+</div>
+</div>
+
+</body></html>

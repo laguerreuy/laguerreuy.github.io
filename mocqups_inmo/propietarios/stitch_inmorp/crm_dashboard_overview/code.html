@@ -1,0 +1,247 @@
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Panel de Control del Propietario</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "neutral-subtle": "#f1f5f9",
+                        "border-subtle": "#e2e8f0"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen">
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-16 border-b border-border-subtle dark:border-slate-800 bg-white dark:bg-slate-900 px-8 flex items-center justify-between">
+<div class="flex items-center gap-4 w-1/3">
+<div class="flex items-center gap-3 mr-8">
+<div class="bg-primary rounded-lg p-1.5 text-white">
+<span class="material-symbols-outlined block text-xl">home_work</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Panel de Control del Propietario</h1>
+</div>
+<div class="relative w-full max-w-sm">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-neutral-subtle dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary/50 text-sm" placeholder="Buscar propiedades o visitas..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-neutral-subtle dark:hover:bg-slate-800 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<div class="h-8 w-[1px] bg-border-subtle dark:border-slate-800 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold text-slate-900 dark:text-white leading-tight">Juan Pérez</p>
+<p class="text-xs text-slate-500 leading-tight">Propietario</p>
+</div>
+<img alt="User Profile" class="h-10 w-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlldOnsNjGhMoiYvBtL1ZJpsSQUOwkecG1-md7K_EUd-eYw7uV190kPm2NBUslRMtIND-OWQ6gO-apzfffAeCBmslkH9EOMpwwjS3qpwSMFxZKBiLxsD_niQsbElvk2jYhujRZMGhO6H9t3pWGJukn-QISEfcEJCSsUlbvk-_PIsL-6Y7LR3VrziVSYX3jGwNjnoS7XkMx4VLbZ-ITpHK3mlRLfDztwxwoHpopQ8zjkFn8tbmvveftjN0pbfivBcS9k_5c2SK_dnVz"/>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Resumen de Mis Inmuebles</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Estado actual y seguimiento de visitas de sus propiedades en Montevideo.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+<span>Añadir Propiedad</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-border-subtle dark:border-slate-800 shadow-sm flex flex-col justify-between h-32">
+<div class="flex items-center justify-between">
+<span class="text-slate-500 text-sm font-medium">Visitas Pendientes</span>
+<div class="text-amber-500 bg-amber-50 dark:bg-amber-500/10 px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">remove</span> 0%
+                        </div>
+</div>
+<div class="flex items-end justify-between">
+<p class="text-3xl font-bold text-slate-900 dark:text-white">12</p>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700 text-4xl">event_upcoming</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-border-subtle dark:border-slate-800 shadow-sm flex flex-col justify-between h-32">
+<div class="flex items-center justify-between">
+<span class="text-slate-500 text-sm font-medium">Nuevos Prospectos</span>
+<div class="text-emerald-500 bg-emerald-50 dark:bg-emerald-500/10 px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> 8%
+                        </div>
+</div>
+<div class="flex items-end justify-between">
+<p class="text-3xl font-bold text-slate-900 dark:text-white">48</p>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700 text-4xl">person_add</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-8">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Visitas Abiertas</h3>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">Ver todas</a>
+</div>
+<div class="flex items-center justify-between gap-4 bg-white dark:bg-slate-900 p-3 border border-border-subtle dark:border-slate-800 rounded-t-xl">
+<div class="relative flex-1 max-w-[240px]">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-9 pr-4 py-1.5 bg-neutral-subtle dark:bg-slate-800 border-none rounded-lg text-xs focus:ring-1 focus:ring-primary/50" placeholder="Filtrar por propiedad..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-3 py-1.5 border border-border-subtle dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-neutral-subtle dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg">tune</span>
+                            Filtros
+                        </button>
+</div>
+<div class="bg-white dark:bg-slate-900 border-x border-b border-border-subtle dark:border-slate-800 rounded-b-xl overflow-x-auto shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-neutral-subtle dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Propiedad</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Propietario</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">INMOBILIARIA</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Interesado</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Fecha</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Estado</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Próx. Contacto</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Acción</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<p class="text-sm font-semibold text-slate-900 dark:text-white leading-none">Apartamento Pocitos</p>
+<p class="text-xs text-slate-500 mt-1">Benito Blanco 1240</p>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Juan Pérez</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-blue-500"></div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Century 21</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Lucía Méndez</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">25 Oct, 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400">Coordinar visita</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-red-600 dark:text-red-500 font-bold text-sm">
+<span>25/10</span>
+<span class="material-symbols-outlined text-base">error</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<p class="text-sm font-semibold text-slate-900 dark:text-white leading-none">Casa en Carrasco</p>
+<p class="text-xs text-slate-500 mt-1">Rostand 1560</p>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Elena Rodríguez</td>
+<td class="px-6 py-4">
+<span class="text-xs italic text-slate-400">Gestión Directa</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Marcos Sosa</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">26 Oct, 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400">Visita coordinada</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">27/10</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<p class="text-sm font-semibold text-slate-900 dark:text-white leading-none">Loft Cordón</p>
+<p class="text-xs text-slate-500 mt-1">Canelones 1890</p>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Carlos Díaz</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Remax Uruguay</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Sofía Blanco</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">24 Oct, 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Mostrado</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">30/10</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<p class="text-sm font-semibold text-slate-900 dark:text-white leading-none">Apartamento Punta Carretas</p>
+<p class="text-xs text-slate-500 mt-1">Solano García 2340</p>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Mario Benedetti</td>
+<td class="px-6 py-4">
+<span class="text-xs italic text-slate-400">Gestión Directa</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Ignacio Larrañaga</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">21 Oct, 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Finalizada</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">05/11</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventario con Agentes y Fechas Flexibles - Montevideo</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col min-h-screen">
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-8 flex items-center justify-between sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-2xl">domain</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">EstateManager</h1>
+</div>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-primary font-semibold text-sm" href="#">Inventario</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#">Contratos</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#">Propietarios</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#">Informes</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-semibold leading-none">Alex Rivera</p>
+<p class="text-[10px] text-slate-500">Administrador</p>
+</div>
+<div class="w-9 h-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="Perfil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNw9LDhzM94Ut_RpIURlAhYGENbbTQM-urK4jXkWqxQTLkynn-HkXFMkBpjR8yvrC3neCdxKByQir3BK-Fvs7fK_7F5mqOO16DZuqzwKKJMCkKdsGiiP_DRPAWDRtMYMc495mhxA1noJulVJN-0MV7xnUCXeEPWf42fHTz0tJHtGKBTRf2xA1G0rqwAKar4ICle-wW4YHCITZ2dDQ-Hscj15RH6pUPHXSSAYRjPecCajQQna4LR_fcCQDEehQUxM5oyZ_qe2faIL2P"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 px-8 py-8 max-w-[1550px] mx-auto w-full">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Inventario Detallado de Propiedades</h2>
+<p class="text-slate-500 mt-1 flex items-center gap-2">
+<span class="font-medium text-slate-900 dark:text-slate-300">124</span> propiedades totales bajo gestión en Montevideo
+                </p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-bold text-sm flex items-center gap-2 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                Nueva Propiedad
+            </button>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 mb-6 flex flex-wrap items-center gap-4">
+<div class="flex-1 min-w-[300px]">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20" placeholder="Buscar por dirección, dueño..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-slate-500 text-[20px]">filter_list</span>
+                    Todos los Estados
+                    <span class="material-symbols-outlined text-slate-400 text-[18px]">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-slate-500 text-[20px]">category</span>
+                    Tipo
+                    <span class="material-symbols-outlined text-slate-400 text-[18px]">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-slate-500 text-[20px]">payments</span>
+                    Rango de Precios
+                    <span class="material-symbols-outlined text-slate-400 text-[18px]">expand_more</span>
+</button>
+</div>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 hidden xl:block"></div>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 text-primary bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">format_list_bulleted</span>
+</button>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-32">ESTADO</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">DIRECCIÓN</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">DORM. / M2</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">ALQUILER / MES</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">PROPIETARIO</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">INQUILINO</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">AGENTE</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">INICIO</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">FIN</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">ACCIONES</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400">
+                                DISPONIBLE
+                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 dark:text-white">Av. 18 de Julio 1450</span>
+<span class="text-xs text-slate-500">Centro</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-600 dark:text-slate-400">1d 45m2</span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-bold text-slate-900 dark:text-white">USD 650</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Ricardo García</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-500 italic">Desconocido</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-sm text-slate-600 dark:text-slate-300">Sofía R.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-500">—</td>
+<td class="px-6 py-5 text-sm text-slate-500">—</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+                                ALQUILADO
+                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 dark:text-white">Bulevar Artigas 1230</span>
+<span class="text-xs text-slate-500">Pocitos</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-600 dark:text-slate-400">2d 75m2</span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$ 35.000</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">María Eugenia López</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-900 dark:text-white">Carlos Martínez</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-blue-500"></div>
+<span class="text-sm text-slate-600 dark:text-slate-300">Marcos G.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">01/03/2023</td>
+<td class="px-6 py-5 text-sm text-slate-500">—</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary">
+                                RESERVADA
+                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 dark:text-white">Luis Alberto de Herrera 3400</span>
+<span class="text-xs text-slate-500">Pocitos Nuevo</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-600 dark:text-slate-400">3d 110m2</span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-bold text-slate-900 dark:text-white">USD 1.200</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Juan Pablo Fernández</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-900 dark:text-white">Lucía Méndez</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-orange-500"></div>
+<span class="text-sm text-slate-600 dark:text-slate-300">Valentina P.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">15/06/2024</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">15/06/2026</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400">
+                                DISPONIBLE
+                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 dark:text-white">Av. Rivera 2540</span>
+<span class="text-xs text-slate-500">Malvín</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-600 dark:text-slate-400">2d 65m2</span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$ 28.500</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Alicia Pereira</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-500 italic">Desconocido</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-sm text-slate-600 dark:text-slate-300">Sofía R.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-500">—</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">30/11/2023</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+                                ALQUILADO
+                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 dark:text-white">Br. España 2890</span>
+<span class="text-xs text-slate-500">Parque Rodó</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-600 dark:text-slate-400">1d 52m2</span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-bold text-slate-900 dark:text-white">$ 24.000</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Sonia Rodríguez</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-900 dark:text-white">Mateo Silva</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-blue-500"></div>
+<span class="text-sm text-slate-600 dark:text-slate-300">Marcos G.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">10/01/2024</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">10/01/2026</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400">
+                                DISPONIBLE
+                            </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 dark:text-white">Av. Italia 4500</span>
+<span class="text-xs text-slate-500">Malvín</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-600 dark:text-slate-400">2d 80m2</span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-bold text-slate-900 dark:text-white">USD 850</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium">Héctor Costa</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm text-slate-500 italic">Desconocido</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-orange-500"></div>
+<span class="text-sm text-slate-600 dark:text-slate-300">Valentina P.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-500">—</td>
+<td class="px-6 py-5 text-sm text-slate-500">—</td>
+<td class="px-6 py-5 text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-8 pb-12 text-center">
+<p class="text-slate-400 text-sm">Fin de la lista. Se muestran 6 de 124 propiedades.</p>
+</div>
+</main>
+</div>
+
+</body></html>
