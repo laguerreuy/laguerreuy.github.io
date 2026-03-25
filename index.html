@@ -209,11 +209,11 @@
                 "sectors.title": "Focus Sectors",
                 "sectors.desc": "We specialize in industries where precision and scalability are non-negotiable.",
                 "sectors.eng.title": "Engineering",
-                "sectors.eng.desc": "Complex calculation management and design workflow automation.",
+                "sectors.eng.desc": "Complex processes management and workflow automation.",
                 "sectors.con.title": "Construction",
                 "sectors.con.desc": "Supply chain logistics and on-site operational transparency tools.",
                 "sectors.re.title": "Real Estate",
-                "sectors.re.desc": "Portfolio analytics and architectural project management suites.",
+                "sectors.re.desc": "Portfolio analytics and commercial processes management asistant.",
                 "sectors.ser.title": "Services",
                 "sectors.ser.desc": "Client lifecycle management for high-touch professional firms.",
                 "cta.title": "Ready to build software that fits?",
@@ -228,8 +228,8 @@
                 "nav.contact": "Contacto",
                 "nav.get_started": "Comenzar",
                 "hero.badge": "Excelencia Operativa",
-                "hero.title": "No adaptamos su empresa al software. Construimos software que <span class=\"text-primary italic\">se adapta a usted.</span>",
-                "hero.desc": "Las soluciones genéricas obligan a transigir. Nuestro riguroso análisis de procesos garantiza que su infraestructura digital refleje su ventaja competitiva única.",
+                "hero.title": "No adaptamos tu empresa al software. Construimos software que <span class=\"text-primary italic\">se adapta a ti.</span>",
+                "hero.desc": "Las soluciones genéricas obligan a cambiar tu forma de trabajar. Nuestro riguroso análisis de procesos garantiza que tu infraestructura digital refleje tu ventaja competitiva única.",
                 "hero.btn.works": "Vea cómo funciona",
                 "hero.btn.talk": "Hable con nosotros",
                 "problem.badge": "La Fricción",
@@ -268,7 +268,7 @@
                 "delivery.ph6.title": "Soporte",
                 "delivery.ph6.desc": "Evolución continua y mantenimiento proactivo del sistema central.",
                 "fit.title": "Software que encaja porque el <span class=\"text-primary\">proceso fue lo primero.</span>",
-                "fit.desc": "La mayoría de los desarrolladores empiezan eligiendo un stack tecnológico. Nosotros empezamos eligiendo un objetivo. Al centrarnos primero en su lógica operativa, el código resultante se convierte en una extensión invisible de su equipo de trabajo.",
+                "fit.desc": "La mayoría de los desarrolladores empiezan eligiendo un stack tecnológico. Nosotros empezamos eligiendo un objetivo. Al centrarnos primero en la lógica operativa, el código resultante se convierte en una extensión invisible de su equipo de trabajo.",
                 "fit.li1": "Reducción de la carga cognitiva para los empleados",
                 "fit.li2": "Cero exceso de licencias o funciones sin usar",
                 "fit.li3": "Propiedad total de la propiedad intelectual",
@@ -279,11 +279,11 @@
                 "sectors.title": "Sectores de Enfoque",
                 "sectors.desc": "Nos especializamos en industrias donde la precisión y la escalabilidad son innegociables.",
                 "sectors.eng.title": "Ingeniería",
-                "sectors.eng.desc": "Gestión de cálculos complejos y automatización del flujo de trabajo de diseño.",
+                "sectors.eng.desc": "Gestión de procesos complejos y automatización del flujo de trabajo de gestión.",
                 "sectors.con.title": "Construcción",
                 "sectors.con.desc": "Logística de la cadena de suministro y herramientas de transparencia operativa en obra.",
                 "sectors.re.title": "Inmobiliaria",
-                "sectors.re.desc": "Análisis de cartera y suites de gestión de proyectos arquitectónicos.",
+                "sectors.re.desc": "Análisis de cartera y suites de gestión de procesos comerciales.",
                 "sectors.ser.title": "Servicios",
                 "sectors.ser.desc": "Gestión del ciclo de vida del cliente para firmas profesionales de alto nivel.",
                 "cta.title": "¿Listo para construir software que encaje?",
@@ -304,6 +304,17 @@
             });
             document.documentElement.lang = lang;
             localStorage.setItem("preferred-lang", lang);
+
+            // Update UI buttons
+            document.querySelectorAll(".lang-btn").forEach(btn => {
+                if (btn.getAttribute("data-lang") === lang) {
+                    btn.classList.add("text-secondary", "font-bold");
+                    btn.classList.remove("text-[#B9C7E4]/50");
+                } else {
+                    btn.classList.remove("text-secondary", "font-bold");
+                    btn.classList.add("text-[#B9C7E4]/50");
+                }
+            });
         }
 
         window.addEventListener("DOMContentLoaded", () => {
@@ -329,8 +340,21 @@
                     href="#industries" data-i18n="nav.industries">Industries</a>
                 <a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#B9C7E4]/80 hover:text-[#10B981] transition-all duration-300"
                     href="#contact" data-i18n="nav.contact">Contact</a>
+
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-3 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+                    <button onclick="setLanguage('en')"
+                        class="lang-btn text-[10px] font-bold tracking-widest transition-all hover:text-secondary"
+                        data-lang="en">EN</button>
+                    <div class="w-[1px] h-3 bg-white/10"></div>
+                    <button onclick="setLanguage('es')"
+                        class="lang-btn text-[10px] font-bold tracking-widest transition-all hover:text-secondary"
+                        data-lang="es">ES</button>
+                </div>
+
                 <a href="#contact"
-                    class="bg-[#B9C7E4] text-[#233148] px-6 py-2 rounded-sm font-semibold text-sm tracking-tight scale-95 active:opacity-80 transition-transform inline-block" data-i18n="nav.get_started">Get
+                    class="bg-[#B9C7E4] text-[#233148] px-6 py-2 rounded-sm font-semibold text-sm tracking-tight scale-95 active:opacity-80 transition-transform inline-block"
+                    data-i18n="nav.get_started">Get
                     Started</a>
             </div>
         </div>
@@ -342,24 +366,28 @@
             <div class="absolute inset-0 bg-grid-subtle pointer-events-none"></div>
             <div class="relative z-10 max-w-5xl">
                 <div class="inline-block px-3 py-1 mb-8 border border-outline-variant/20 rounded-full">
-                    <span class="text-xs font-label uppercase tracking-[0.2em] text-secondary" data-i18n="hero.badge">Operational
+                    <span class="text-xs font-label uppercase tracking-[0.2em] text-secondary"
+                        data-i18n="hero.badge">Operational
                         Excellence</span>
                 </div>
-                <h1
-                    class="text-5xl md:text-8xl font-extrabold font-headline leading-[0.95] tracking-tighter text-on-background mb-10 max-w-4xl" data-i18n="hero.title">
+                <h1 class="text-5xl md:text-8xl font-extrabold font-headline leading-[0.95] tracking-tighter text-on-background mb-10 max-w-4xl"
+                    data-i18n="hero.title">
                     We don't adapt your company to the software. We build software that <span
                         class="text-primary italic">adapts to you.</span>
                 </h1>
-                <p class="text-xl md:text-2xl font-light text-on-surface-variant max-w-2xl leading-relaxed mb-12" data-i18n="hero.desc">
+                <p class="text-xl md:text-2xl font-light text-on-surface-variant max-w-2xl leading-relaxed mb-12"
+                    data-i18n="hero.desc">
                     Generic solutions force compromise. Our rigorous process analysis ensures your digital
                     infrastructure mirrors your unique competitive advantage.
                 </p>
                 <div class="flex flex-col md:flex-row gap-6 items-start">
                     <a href="#process"
-                        class="px-10 py-5 bg-primary text-on-primary font-bold rounded-sm tracking-tight transition-all hover:translate-y-[-2px] inline-block text-center" data-i18n="hero.btn.works">See
+                        class="px-10 py-5 bg-primary text-on-primary font-bold rounded-sm tracking-tight transition-all hover:translate-y-[-2px] inline-block text-center"
+                        data-i18n="hero.btn.works">See
                         how it works</a>
                     <a href="#contact"
-                        class="px-10 py-5 border border-outline-variant/30 text-on-background font-bold rounded-sm tracking-tight transition-all hover:bg-surface-container inline-block text-center" data-i18n="hero.btn.talk">Talk
+                        class="px-10 py-5 border border-outline-variant/30 text-on-background font-bold rounded-sm tracking-tight transition-all hover:bg-surface-container inline-block text-center"
+                        data-i18n="hero.btn.talk">Talk
                         to us</a>
                 </div>
             </div>
@@ -375,13 +403,16 @@
                 <div class="max-w-7xl mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-end mb-24">
                         <div class="lg:col-span-8">
-                            <label class="text-xs font-label uppercase tracking-[0.3em] text-secondary mb-4 block" data-i18n="problem.badge">The
+                            <label class="text-xs font-label uppercase tracking-[0.3em] text-secondary mb-4 block"
+                                data-i18n="problem.badge">The
                                 Friction</label>
-                            <h2 class="text-4xl md:text-5xl font-bold font-headline tracking-tight text-on-background" data-i18n="problem.title">
+                            <h2 class="text-4xl md:text-5xl font-bold font-headline tracking-tight text-on-background"
+                                data-i18n="problem.title">
                                 Standardized software is a <br />bottleneck for growth.</h2>
                         </div>
                         <div class="lg:col-span-4 pb-2">
-                            <p class="text-on-surface-variant leading-relaxed" data-i18n="problem.desc">Most companies suffer from the "Template
+                            <p class="text-on-surface-variant leading-relaxed" data-i18n="problem.desc">Most companies
+                                suffer from the "Template
                                 Trap"—forcing high-performance teams into low-flexibility tools.</p>
                         </div>
                     </div>
@@ -391,7 +422,8 @@
                             <span
                                 class="material-symbols-outlined text-4xl text-secondary mb-8 group-hover:scale-110 transition-transform">layers_clear</span>
                             <h3 class="text-xl font-bold mb-4" data-i18n="problem.card1.title">Generic Platforms</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="problem.card1.desc">Rigid architectures that lack the
+                            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="problem.card1.desc">
+                                Rigid architectures that lack the
                                 nuance of your specific industry workflow, leading to shadow processes and manual
                                 workarounds.</p>
                         </div>
@@ -400,7 +432,8 @@
                             <span
                                 class="material-symbols-outlined text-4xl text-secondary mb-8 group-hover:scale-110 transition-transform">trending_down</span>
                             <h3 class="text-xl font-bold mb-4" data-i18n="problem.card2.title">Projects Over Budget</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="problem.card2.desc">Poorly scoped digital transitions
+                            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="problem.card2.desc">
+                                Poorly scoped digital transitions
                                 that balloon in cost due to lack of upfront process validation and clear roadmap
                                 integrity.</p>
                         </div>
@@ -409,7 +442,8 @@
                             <span
                                 class="material-symbols-outlined text-4xl text-secondary mb-8 group-hover:scale-110 transition-transform">slow_motion_video</span>
                             <h3 class="text-xl font-bold mb-4" data-i18n="problem.card3.title">Slow Adoption</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="problem.card3.desc">Tools that feel foreign to the
+                            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="problem.card3.desc">
+                                Tools that feel foreign to the
                                 end-user. If the software doesn't mirror the reality of the work, the team will simply
                                 ignore it.</p>
                         </div>
@@ -421,9 +455,11 @@
             <div class="py-32 px-8 md:px-24 bg-surface text-on-background overflow-hidden">
                 <div class="max-w-7xl mx-auto">
                     <div class="flex flex-col items-center text-center mb-24">
-                        <label class="text-xs font-label uppercase tracking-[0.3em] text-secondary mb-6" data-i18n="method.badge">The
+                        <label class="text-xs font-label uppercase tracking-[0.3em] text-secondary mb-6"
+                            data-i18n="method.badge">The
                             Methodology</label>
-                        <h2 class="text-4xl md:text-6xl font-bold font-headline tracking-tighter max-w-3xl" data-i18n="method.title">We start
+                        <h2 class="text-4xl md:text-6xl font-bold font-headline tracking-tighter max-w-3xl"
+                            data-i18n="method.title">We start
                             with your reality, not a template.</h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant/10 mb-24">
@@ -431,9 +467,11 @@
                         <div class="p-16 bg-surface-container-high border-b border-r border-outline-variant/10">
                             <div class="flex items-center gap-4 mb-8">
                                 <span class="text-3xl font-black text-secondary/30">01</span>
-                                <h3 class="text-2xl font-bold tracking-tight" data-i18n="method.card1.title">Precision Mapping</h3>
+                                <h3 class="text-2xl font-bold tracking-tight" data-i18n="method.card1.title">Precision
+                                    Mapping</h3>
                             </div>
-                            <p class="text-on-surface-variant leading-relaxed" data-i18n="method.card1.desc">We audit every touchpoint of your current
+                            <p class="text-on-surface-variant leading-relaxed" data-i18n="method.card1.desc">We audit
+                                every touchpoint of your current
                                 operations before a single line of code is written. We document the "tribal knowledge"
                                 that makes you successful.</p>
                         </div>
@@ -441,9 +479,11 @@
                         <div class="p-16 bg-surface-container-high border-b border-outline-variant/10">
                             <div class="flex items-center gap-4 mb-8">
                                 <span class="text-3xl font-black text-secondary/30">02</span>
-                                <h3 class="text-2xl font-bold tracking-tight" data-i18n="method.card2.title">Validating Demand</h3>
+                                <h3 class="text-2xl font-bold tracking-tight" data-i18n="method.card2.title">Validating
+                                    Demand</h3>
                             </div>
-                            <p class="text-on-surface-variant leading-relaxed" data-i18n="method.card2.desc">Software is only built for needs that
+                            <p class="text-on-surface-variant leading-relaxed" data-i18n="method.card2.desc">Software is
+                                only built for needs that
                                 generate measurable value. We eliminate features that add noise rather than utility.
                             </p>
                         </div>
@@ -451,18 +491,22 @@
                         <div class="p-16 bg-surface-container-high border-r border-outline-variant/10">
                             <div class="flex items-center gap-4 mb-8">
                                 <span class="text-3xl font-black text-secondary/30">03</span>
-                                <h3 class="text-2xl font-bold tracking-tight" data-i18n="method.card3.title">Eliminating Duplication</h3>
+                                <h3 class="text-2xl font-bold tracking-tight" data-i18n="method.card3.title">Eliminating
+                                    Duplication</h3>
                             </div>
-                            <p class="text-on-surface-variant leading-relaxed" data-i18n="method.card3.desc">Our systems consolidate fragmented data
+                            <p class="text-on-surface-variant leading-relaxed" data-i18n="method.card3.desc">Our systems
+                                consolidate fragmented data
                                 silos into a single, architectural source of truth that powers decision-making.</p>
                         </div>
                         <!-- Column 4 -->
                         <div class="p-16 bg-surface-container-high">
                             <div class="flex items-center gap-4 mb-8">
                                 <span class="text-3xl font-black text-secondary/30">04</span>
-                                <h3 class="text-2xl font-bold tracking-tight" data-i18n="method.card4.title">Constant Evaluation</h3>
+                                <h3 class="text-2xl font-bold tracking-tight" data-i18n="method.card4.title">Constant
+                                    Evaluation</h3>
                             </div>
-                            <p class="text-on-surface-variant leading-relaxed" data-i18n="method.card4.desc">Post-deployment refinement is part of our
+                            <p class="text-on-surface-variant leading-relaxed" data-i18n="method.card4.desc">
+                                Post-deployment refinement is part of our
                                 DNA. We monitor usage patterns to ensure the software evolves as your business grows.
                             </p>
                         </div>
@@ -471,14 +515,15 @@
                     <div class="p-12 md:p-20 bg-surface-container-lowest border-l-4 border-secondary relative">
                         <span
                             class="material-symbols-outlined absolute top-10 right-10 text-8xl text-outline-variant/10 select-none">format_quote</span>
-                        <p
-                            class="text-2xl md:text-3xl font-light italic leading-relaxed text-on-background relative z-10" data-i18n="quote.text">
+                        <p class="text-2xl md:text-3xl font-light italic leading-relaxed text-on-background relative z-10"
+                            data-i18n="quote.text">
                             "The most sophisticated systems are often built upon the simplest, most intentional
                             interventions. We don't over-engineer; we over-understand."
                         </p>
                         <div class="mt-8 flex items-center gap-4">
                             <div class="w-12 h-[1px] bg-secondary"></div>
-                            <span class="text-xs font-label uppercase tracking-widest text-on-surface-variant" data-i18n="quote.phi">The
+                            <span class="text-xs font-label uppercase tracking-widest text-on-surface-variant"
+                                data-i18n="quote.phi">The
                                 Softlogic Philosophy</span>
                         </div>
                     </div>
@@ -489,8 +534,10 @@
             <div class="py-32 px-8 md:px-24 bg-surface-container-lowest">
                 <div class="max-w-7xl mx-auto">
                     <div class="mb-20">
-                        <h2 class="text-4xl font-bold font-headline tracking-tight mb-4" data-i18n="delivery.title">Six-Phase Delivery</h2>
-                        <p class="text-on-surface-variant" data-i18n="delivery.desc">Our architectural approach to software development lifecycle.
+                        <h2 class="text-4xl font-bold font-headline tracking-tight mb-4" data-i18n="delivery.title">
+                            Six-Phase Delivery</h2>
+                        <p class="text-on-surface-variant" data-i18n="delivery.desc">Our architectural approach to
+                            software development lifecycle.
                         </p>
                     </div>
                     <div class="relative">
@@ -507,7 +554,8 @@
                                     </div>
                                 </div>
                                 <h4 class="text-lg font-bold" data-i18n="delivery.ph1.title">Understanding</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed" data-i18n="delivery.ph1.desc">Deep immersion into your
+                                <p class="text-sm text-on-surface-variant leading-relaxed"
+                                    data-i18n="delivery.ph1.desc">Deep immersion into your
                                     existing workflows and team pain points.</p>
                             </div>
                             <div class="flex flex-col gap-6">
@@ -515,7 +563,8 @@
                                     class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 text-on-background font-bold text-xl">
                                     02</div>
                                 <h4 class="text-lg font-bold" data-i18n="delivery.ph2.title">Flow Design</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed" data-i18n="delivery.ph2.desc">Architecting the logic of how
+                                <p class="text-sm text-on-surface-variant leading-relaxed"
+                                    data-i18n="delivery.ph2.desc">Architecting the logic of how
                                     data and tasks move through the system.</p>
                             </div>
                             <div class="flex flex-col gap-6">
@@ -523,7 +572,8 @@
                                     class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 text-on-background font-bold text-xl">
                                     03</div>
                                 <h4 class="text-lg font-bold" data-i18n="delivery.ph3.title">Prototyping</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed" data-i18n="delivery.ph3.desc">Interactive blueprints to
+                                <p class="text-sm text-on-surface-variant leading-relaxed"
+                                    data-i18n="delivery.ph3.desc">Interactive blueprints to
                                     validate the user experience early.</p>
                             </div>
                             <div class="flex flex-col gap-6">
@@ -531,7 +581,8 @@
                                     class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 text-on-background font-bold text-xl">
                                     04</div>
                                 <h4 class="text-lg font-bold" data-i18n="delivery.ph4.title">Development</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed" data-i18n="delivery.ph4.desc">High-performance engineering
+                                <p class="text-sm text-on-surface-variant leading-relaxed"
+                                    data-i18n="delivery.ph4.desc">High-performance engineering
                                     with rigorous security standards.</p>
                             </div>
                             <div class="flex flex-col gap-6">
@@ -539,7 +590,8 @@
                                     class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 text-on-background font-bold text-xl">
                                     05</div>
                                 <h4 class="text-lg font-bold" data-i18n="delivery.ph5.title">Go-Live</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed" data-i18n="delivery.ph5.desc">Seamless deployment and
+                                <p class="text-sm text-on-surface-variant leading-relaxed"
+                                    data-i18n="delivery.ph5.desc">Seamless deployment and
                                     comprehensive team onboarding.</p>
                             </div>
                             <div class="flex flex-col gap-6">
@@ -547,7 +599,8 @@
                                     class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 text-on-background font-bold text-xl">
                                     06</div>
                                 <h4 class="text-lg font-bold" data-i18n="delivery.ph6.title">Support</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed" data-i18n="delivery.ph6.desc">Continuous evolution and
+                                <p class="text-sm text-on-surface-variant leading-relaxed"
+                                    data-i18n="delivery.ph6.desc">Continuous evolution and
                                     proactive maintenance of the core system.</p>
                             </div>
                         </div>
@@ -560,7 +613,8 @@
         <section class="py-32 px-8 md:px-24 bg-surface-container-low">
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-bold font-headline tracking-tight mb-8" data-i18n="fit.title">Software that fits
+                    <h2 class="text-4xl md:text-5xl font-bold font-headline tracking-tight mb-8" data-i18n="fit.title">
+                        Software that fits
                         because the <span class="text-primary">process came first.</span></h2>
                     <p class="text-xl text-on-surface-variant font-light leading-relaxed mb-10" data-i18n="fit.desc">
                         Most developers start by choosing a tech stack. We start by choosing an objective. By focusing
@@ -570,22 +624,26 @@
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
                             <span class="material-symbols-outlined text-secondary">check_circle</span>
-                            <span class="text-on-background" data-i18n="fit.li1">Reduced cognitive load for employees</span>
+                            <span class="text-on-background" data-i18n="fit.li1">Reduced cognitive load for
+                                employees</span>
                         </li>
                         <li class="flex items-start gap-4">
                             <span class="material-symbols-outlined text-secondary">check_circle</span>
-                            <span class="text-on-background" data-i18n="fit.li2">Zero license bloat or unused features</span>
+                            <span class="text-on-background" data-i18n="fit.li2">Zero license bloat or unused
+                                features</span>
                         </li>
                         <li class="flex items-start gap-4">
                             <span class="material-symbols-outlined text-secondary">check_circle</span>
-                            <span class="text-on-background" data-i18n="fit.li3">Total ownership of intellectual property</span>
+                            <span class="text-on-background" data-i18n="fit.li3">Total ownership of intellectual
+                                property</span>
                         </li>
                     </ul>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Comparison Card 1 -->
                     <div class="bg-surface-container p-8 border-t-2 border-outline-variant">
-                        <h4 class="text-xs font-label uppercase tracking-widest mb-6 text-on-surface-variant" data-i18n="fit.compare.generic">Generic
+                        <h4 class="text-xs font-label uppercase tracking-widest mb-6 text-on-surface-variant"
+                            data-i18n="fit.compare.generic">Generic
                             Approach</h4>
                         <div class="space-y-4">
                             <div class="h-2 w-full bg-outline-variant/20 rounded"></div>
@@ -595,13 +653,15 @@
                                 class="h-12 w-12 rounded-full border border-error/50 flex items-center justify-center mt-6">
                                 <span class="material-symbols-outlined text-error">close</span>
                             </div>
-                            <p class="text-xs font-medium text-error/80 pt-4 uppercase tracking-tighter" data-i18n="fit.compare.generic.res">Forces workflow
+                            <p class="text-xs font-medium text-error/80 pt-4 uppercase tracking-tighter"
+                                data-i18n="fit.compare.generic.res">Forces workflow
                                 adaptation</p>
                         </div>
                     </div>
                     <!-- Comparison Card 2 -->
                     <div class="bg-surface-container-high p-8 border-t-2 border-secondary">
-                        <h4 class="text-xs font-label uppercase tracking-widest mb-6 text-secondary" data-i18n="fit.compare.soft">Softlogic
+                        <h4 class="text-xs font-label uppercase tracking-widest mb-6 text-secondary"
+                            data-i18n="fit.compare.soft">Softlogic
                             Approach</h4>
                         <div class="space-y-4">
                             <div class="h-2 w-full bg-secondary/20 rounded"></div>
@@ -612,7 +672,8 @@
                                 <span class="material-symbols-outlined text-secondary"
                                     style="font-variation-settings: 'FILL' 1;">check</span>
                             </div>
-                            <p class="text-xs font-medium text-secondary pt-4 uppercase tracking-tighter" data-i18n="fit.compare.soft.res">Mirrors
+                            <p class="text-xs font-medium text-secondary pt-4 uppercase tracking-tighter"
+                                data-i18n="fit.compare.soft.res">Mirrors
                                 operational DNA</p>
                         </div>
                     </div>
@@ -624,33 +685,39 @@
         <section id="industries" class="py-32 px-8 md:px-24 bg-surface">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-20">
-                    <h2 class="text-4xl font-bold font-headline tracking-tight" data-i18n="sectors.title">Focus Sectors</h2>
-                    <p class="text-on-surface-variant mt-4" data-i18n="sectors.desc">We specialize in industries where precision and scalability
+                    <h2 class="text-4xl font-bold font-headline tracking-tight" data-i18n="sectors.title">Focus Sectors
+                    </h2>
+                    <p class="text-on-surface-variant mt-4" data-i18n="sectors.desc">We specialize in industries where
+                        precision and scalability
                         are non-negotiable.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="p-10 bg-surface-container-high hover:bg-surface-variant transition-colors group">
                         <span class="material-symbols-outlined text-secondary mb-6 block text-3xl">architecture</span>
                         <h3 class="text-lg font-bold mb-2" data-i18n="sectors.eng.title">Engineering</h3>
-                        <p class="text-sm text-on-surface-variant" data-i18n="sectors.eng.desc">Complex calculation management and design workflow
+                        <p class="text-sm text-on-surface-variant" data-i18n="sectors.eng.desc">Complex calculation
+                            management and design workflow
                             automation.</p>
                     </div>
                     <div class="p-10 bg-surface-container-high hover:bg-surface-variant transition-colors group">
                         <span class="material-symbols-outlined text-secondary mb-6 block text-3xl">construction</span>
                         <h3 class="text-lg font-bold mb-2" data-i18n="sectors.con.title">Construction</h3>
-                        <p class="text-sm text-on-surface-variant" data-i18n="sectors.con.desc">Supply chain logistics and on-site operational
+                        <p class="text-sm text-on-surface-variant" data-i18n="sectors.con.desc">Supply chain logistics
+                            and on-site operational
                             transparency tools.</p>
                     </div>
                     <div class="p-10 bg-surface-container-high hover:bg-surface-variant transition-colors group">
                         <span class="material-symbols-outlined text-secondary mb-6 block text-3xl">domain</span>
                         <h3 class="text-lg font-bold mb-2" data-i18n="sectors.re.title">Real Estate</h3>
-                        <p class="text-sm text-on-surface-variant" data-i18n="sectors.re.desc">Portfolio analytics and architectural project
+                        <p class="text-sm text-on-surface-variant" data-i18n="sectors.re.desc">Portfolio analytics and
+                            architectural project
                             management suites.</p>
                     </div>
                     <div class="p-10 bg-surface-container-high hover:bg-surface-variant transition-colors group">
                         <span class="material-symbols-outlined text-secondary mb-6 block text-3xl">hub</span>
                         <h3 class="text-lg font-bold mb-2" data-i18n="sectors.ser.title">Services</h3>
-                        <p class="text-sm text-on-surface-variant" data-i18n="sectors.ser.desc">Client lifecycle management for high-touch
+                        <p class="text-sm text-on-surface-variant" data-i18n="sectors.ser.desc">Client lifecycle
+                            management for high-touch
                             professional firms.</p>
                     </div>
                 </div>
@@ -663,9 +730,11 @@
                 <div
                     class="bg-secondary p-12 md:p-24 rounded-sm flex flex-col md:flex-row items-center justify-between gap-12 text-on-secondary">
                     <div class="max-w-xl">
-                        <h2 class="text-4xl md:text-5xl font-black font-headline tracking-tighter leading-tight mb-4" data-i18n="cta.title">
+                        <h2 class="text-4xl md:text-5xl font-black font-headline tracking-tighter leading-tight mb-4"
+                            data-i18n="cta.title">
                             Ready to build software that fits?</h2>
-                        <p class="text-on-secondary/80 text-lg leading-relaxed" data-i18n="cta.desc">Let's audit your current process and
+                        <p class="text-on-secondary/80 text-lg leading-relaxed" data-i18n="cta.desc">Let's audit your
+                            current process and
                             discover where custom architecture can unlock your next phase of growth.</p>
                         <div class="mt-8 space-y-2">
                             <a href="mailto:info@softlogic.app"
@@ -675,7 +744,8 @@
                     </div>
                     <div>
                         <a href="https://wa.me/59897086229?text=Hola,%20quisiera%20más%20información" target="_blank"
-                            class="bg-on-secondary text-secondary px-12 py-6 text-xl font-bold uppercase tracking-widest rounded-sm hover:translate-x-2 transition-transform inline-block" data-i18n="cta.btn">Start
+                            class="bg-on-secondary text-secondary px-12 py-6 text-xl font-bold uppercase tracking-widest rounded-sm hover:translate-x-2 transition-transform inline-block"
+                            data-i18n="cta.btn">Start
                             the conversation</a>
                     </div>
                 </div>
@@ -692,7 +762,8 @@
                     <img src="logo.png" alt="Softlogic Logo" class="h-8 w-auto opacity-80" />
                     <div class="text-xl font-black text-[#B9C7E4] font-headline tracking-tighter">SOFTLOGIC</div>
                 </div>
-                <p class="text-[#B9C7E4]/60 text-xs tracking-[0.05em] uppercase font-light leading-relaxed max-w-sm" data-i18n="footer.tagline">
+                <p class="text-[#B9C7E4]/60 text-xs tracking-[0.05em] uppercase font-light leading-relaxed max-w-sm"
+                    data-i18n="footer.tagline">
                     High-end architectural software systems for global industry leaders.
                 </p>
             </div>
@@ -710,14 +781,16 @@
             <!-- Contact area -->
             <div class="flex flex-col items-center space-y-2">
                 <a href="https://wa.me/59897086229" target="_blank"
-                    class="text-[#B9C7E4]/60 text-sm font-medium tracking-widest hover:text-[#10B981]">+598 97 086 229</a>
+                    class="text-[#B9C7E4]/60 text-sm font-medium tracking-widest hover:text-[#10B981]">+598 97 086
+                    229</a>
                 <a href="mailto:info@softlogic.app"
                     class="text-[#B9C7E4]/60 text-sm font-medium tracking-widest hover:text-[#10B981]">info@softlogic.app</a>
             </div>
 
             <!-- Bottom bar -->
             <div class="pt-8 border-t border-[#44474D]/10 w-full flex flex-col items-center gap-6">
-                <p class="text-[#B9C7E4]/40 text-[10px] uppercase tracking-[0.2em]" data-i18n="footer.copyright">© 2024 Softlogic Architectural Systems.
+                <p class="text-[#B9C7E4]/40 text-[10px] uppercase tracking-[0.2em]" data-i18n="footer.copyright">© 2024
+                    Softlogic Architectural Systems.
                     All rights reserved.</p>
                 <div class="flex gap-8">
                     <a class="text-[#B9C7E4]/40 hover:text-secondary" href="#"><span
