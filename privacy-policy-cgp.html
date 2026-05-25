@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad · Savia | Privacy Policy · Savia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:       #006A68;
+      --primary-light: #00BFBD;
+      --bg:            #F9F9FF;
+      --surface:       #FFFFFF;
+      --text:          #001C3A;
+      --text-muted:    #4A6178;
+      --radius:        12px;
+      --shadow:        0 2px 12px rgba(0,106,104,.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── Header ─────────────────────────────────────────── */
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    header .brand { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: .75; margin-bottom: 8px; }
+    header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; margin-bottom: 6px; }
+    header .updated { font-size: 13px; opacity: .7; margin-top: 10px; }
+
+    /* ── Lang toggle ─────────────────────────────────────── */
+    .lang-bar {
+      background: var(--surface);
+      border-bottom: 1px solid rgba(0,106,104,.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 24px;
+      box-shadow: var(--shadow);
+    }
+    .lang-bar a {
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      transition: background .15s, color .15s;
+    }
+    .lang-bar a:hover { background: var(--primary); color: #fff; }
+
+    /* ── Main layout ─────────────────────────────────────── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* ── Section divider ─────────────────────────────────── */
+    .lang-section {
+      margin-bottom: 64px;
+    }
+    .lang-section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .lang-section-header .flag {
+      font-size: 28px;
+      line-height: 1;
+    }
+    .lang-section-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* ── Card ────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 28px 24px;
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card h3 .icon { font-size: 20px; }
+    .card p { color: var(--text); margin-bottom: 10px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    .card ul li {
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .card ul li strong { color: var(--primary); }
+
+    /* ── Platform badges ─────────────────────────────────── */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 4px;
+    }
+    @media (max-width: 520px) { .platform-grid { grid-template-columns: 1fr; } }
+    .platform-card {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--primary-light);
+    }
+    .platform-card .plat-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .platform-card ul { padding-left: 18px; }
+    .platform-card ul li { font-size: 14px; margin-bottom: 4px; color: var(--text); }
+
+    /* ── Table ───────────────────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+    th:first-child { border-radius: 8px 0 0 0; }
+    th:last-child  { border-radius: 0 8px 0 0; }
+    td {
+      padding: 9px 14px;
+      border-bottom: 1px solid rgba(0,106,104,.08);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--bg); }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(0,106,104,.1);
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Accent bar ──────────────────────────────────────── */
+    .accent-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* ── Separator ───────────────────────────────────────── */
+    hr.divider {
+      border: none;
+      border-top: 2px dashed rgba(0,106,104,.15);
+      margin: 52px 0 48px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="brand">Nenúfares SAS · Logística</p>
+  <h1>Savia — Política de Privacidad<br><span style="font-weight:400;font-size:.7em">Privacy Policy</span></h1>
+  <p class="updated">Última actualización / Last updated: 24 de mayo de 2026</p>
+</header>
+
+<nav class="lang-bar" aria-label="Seleccionar idioma / Select language">
+  <a href="#es">🇺🇾 Español</a>
+  <a href="#en">🇬🇧 English</a>
+</nav>
+
+<main>
+
+  <!-- ══════════════════════════════════════════════════════
+       ESPAÑOL
+  ══════════════════════════════════════════════════════ -->
+  <section id="es" class="lang-section">
+    <div class="lang-section-header">
+      <span class="flag">🇺🇾</span>
+      <h2>Política de Privacidad — Español</h2>
+    </div>
+    <div class="accent-bar"></div>
+
+    <div class="card">
+      <h3><span class="icon">📋</span> Introducción</h3>
+      <p>Esta Política de Privacidad describe cómo <strong>Nenúfares SAS</strong> («Nenúfares», «nosotros») recopila, utiliza y protege la información personal de los usuarios de la aplicación móvil <strong>Savia</strong>, disponible para iOS y Android.</p>
+      <p>Al usar la aplicación, aceptás esta política. Si no estás de acuerdo, por favor no uses Savia.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🏢</span> Responsable del tratamiento</h3>
+      <ul>
+        <li><strong>Empresa:</strong> Nenúfares SAS</li>
+        <li><strong>Domicilio:</strong> Asunción 1220, 11800, Montevideo, Uruguay</li>
+        <li><strong>Correo electrónico:</strong> <a href="mailto:comercial@nenufares.net">comercial@nenufares.net</a></li>
+        <li><strong>Teléfono:</strong> +598 92 800 417</li>
+        <li><strong>Sitio web:</strong> <a href="https://www.nenufares.com.uy" target="_blank" rel="noopener">www.nenufares.com.uy</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📊</span> Datos que recopilamos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Datos específicos</th>
+            <th>Obligatorio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Información de cuenta</strong></td>
+            <td>Correo electrónico, nombre, razón social, RUT</td>
+            <td>Sí</td>
+          </tr>
+          <tr>
+            <td><strong>Ubicación</strong></td>
+            <td>Ubicación precisa y aproximada del dispositivo</td>
+            <td>Sí</td>
+          </tr>
+          <tr>
+            <td><strong>Fotos</strong></td>
+            <td>Imágenes de paquetes (para estimación de dimensiones)</td>
+            <td>No (opcional)</td>
+          </tr>
+          <tr>
+            <td><strong>Audio / voz</strong></td>
+            <td>Grabaciones de voz para entrada de datos por dictado</td>
+            <td>No (opcional)</td>
+          </tr>
+          <tr>
+            <td><strong>Actividad en la app</strong></td>
+            <td>Envíos creados, direcciones registradas, historial de estados</td>
+            <td>Sí</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;font-size:14px;color:var(--text-muted);">No recopilamos datos de pago, información bancaria ni datos sensibles de salud.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🎯</span> Finalidad del tratamiento</h3>
+      <ul>
+        <li><strong>Cuenta:</strong> Autenticación, identificación de empresa y acceso a funciones.</li>
+        <li><strong>Ubicación:</strong> Selección y confirmación de direcciones de origen y destino en el mapa.</li>
+        <li><strong>Fotos:</strong> Estimación automática de dimensiones de paquetes mediante inteligencia artificial (Google Gemini).</li>
+        <li><strong>Audio / voz:</strong> Permitir el ingreso de medidas y datos mediante dictado de voz.</li>
+        <li><strong>Actividad:</strong> Gestionar envíos, generar reportes y brindar soporte al cliente.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔗</span> Servicios de terceros</h3>
+      <p>Compartimos datos únicamente con proveedores de infraestructura necesarios para el funcionamiento del servicio:</p>
+      <ul>
+        <li><strong>Google Firebase</strong> — Autenticación, base de datos (Firestore), almacenamiento de archivos, notificaciones push.</li>
+        <li><strong>HERE Technologies</strong> — Mapas, geocodificación y búsqueda de direcciones.</li>
+        <li><strong>Google Gemini API</strong> — Análisis de fotografías para estimación de dimensiones de paquetes.</li>
+      </ul>
+      <p style="font-size:14px;color:var(--text-muted);margin-top:10px;">No vendemos, alquilamos ni cedemos tus datos a terceros con fines comerciales o publicitarios.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📱</span> Permisos según plataforma</h3>
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="plat-title">🤖 Android</div>
+          <ul>
+            <li><code>ACCESS_FINE_LOCATION</code> — Selección precisa de direcciones en el mapa</li>
+            <li><code>ACCESS_COARSE_LOCATION</code> — Ubicación aproximada para el mapa</li>
+            <li><code>CAMERA</code> — Fotografiar paquetes</li>
+            <li><code>RECORD_AUDIO</code> — Dictado de voz</li>
+            <li>Almacenamiento/medios — Selección de imágenes</li>
+          </ul>
+        </div>
+        <div class="platform-card">
+          <div class="plat-title">🍎 iOS</div>
+          <ul>
+            <li>Ubicación cuando la app está en uso — Selección de direcciones en el mapa</li>
+            <li>Cámara — Fotografiar paquetes</li>
+            <li>Micrófono — Dictado de voz</li>
+            <li>Biblioteca de fotos — Selección de imágenes</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:14px;font-size:14px;color:var(--text-muted);">Los permisos marcados como opcionales sólo se activan si el usuario los habilita. Podés revocarlos en cualquier momento desde la configuración de tu dispositivo.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🗓️</span> Conservación de datos</h3>
+      <p>Conservamos tus datos mientras tu cuenta esté activa o durante el tiempo necesario para prestar el servicio. Si eliminás tu cuenta, procederemos a borrar o anonimizar tu información personal en un plazo razonable, salvo que la ley exija su conservación.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">⚖️</span> Tus derechos (Ley 18.331 — Uruguay)</h3>
+      <p>De acuerdo con la Ley 18.331 de Protección de Datos Personales de Uruguay, tenés derecho a:</p>
+      <ul>
+        <li><strong>Acceso:</strong> Conocer qué datos tuyos procesamos.</li>
+        <li><strong>Rectificación:</strong> Corregir información inexacta.</li>
+        <li><strong>Cancelación / Eliminación:</strong> Solicitar el borrado de tus datos.</li>
+        <li><strong>Oposición:</strong> Oponerte al tratamiento de tus datos en ciertos casos.</li>
+      </ul>
+      <p>Para ejercer estos derechos, escribinos a <a href="mailto:comercial@nenufares.net">comercial@nenufares.net</a>.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">👶</span> Menores de edad</h3>
+      <p>Savia es una aplicación de uso empresarial dirigida a personas mayores de 18 años. No recopilamos intencionalmente datos de menores de edad. Si detectamos que un menor ha proporcionado información, procederemos a eliminarla.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔒</span> Seguridad</h3>
+      <p>Todos los datos se transmiten cifrados mediante TLS/HTTPS. La información almacenada en la nube se aloja en la infraestructura de Google Firebase, que cumple con los estándares de seguridad ISO 27001 y SOC 2. No obstante, ningún sistema es 100 % infalible; te recomendamos mantener la confidencialidad de tus credenciales.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">✏️</span> Cambios en esta política</h3>
+      <p>Podemos actualizar esta política en cualquier momento. Cuando lo hagamos, actualizaremos la fecha de «Última actualización» en esta página. Te notificaremos sobre cambios significativos a través de la aplicación o por correo electrónico.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📬</span> Contacto</h3>
+      <ul>
+        <li><strong>Correo:</strong> <a href="mailto:comercial@nenufares.net">comercial@nenufares.net</a></li>
+        <li><strong>Teléfono:</strong> +598 92 800 417</li>
+        <li><strong>Dirección:</strong> Asunción 1220, 11800, Montevideo, Uruguay</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══════════════════════════════════════════════════════
+       ENGLISH
+  ══════════════════════════════════════════════════════ -->
+  <section id="en" class="lang-section">
+    <div class="lang-section-header">
+      <span class="flag">🇬🇧</span>
+      <h2>Privacy Policy — English</h2>
+    </div>
+    <div class="accent-bar"></div>
+
+    <div class="card">
+      <h3><span class="icon">📋</span> Introduction</h3>
+      <p>This Privacy Policy describes how <strong>Nenúfares SAS</strong> ("Nenúfares", "we", "us") collects, uses, and protects the personal information of users of the <strong>Savia</strong> mobile application, available for iOS and Android.</p>
+      <p>By using the app, you agree to this policy. If you do not agree, please do not use Savia.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🏢</span> Data Controller</h3>
+      <ul>
+        <li><strong>Company:</strong> Nenúfares SAS</li>
+        <li><strong>Address:</strong> Asunción 1220, 11800, Montevideo, Uruguay</li>
+        <li><strong>Email:</strong> <a href="mailto:comercial@nenufares.net">comercial@nenufares.net</a></li>
+        <li><strong>Phone:</strong> +598 92 800 417</li>
+        <li><strong>Website:</strong> <a href="https://www.nenufares.com.uy" target="_blank" rel="noopener">www.nenufares.com.uy</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📊</span> Data We Collect</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Specific Data</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Account information</strong></td>
+            <td>Email address, name, company name, tax ID (RUT)</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Location</strong></td>
+            <td>Precise and approximate device location</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Photos</strong></td>
+            <td>Package images (for dimension estimation)</td>
+            <td>No (optional)</td>
+          </tr>
+          <tr>
+            <td><strong>Audio / voice</strong></td>
+            <td>Voice recordings for speech-to-text data entry</td>
+            <td>No (optional)</td>
+          </tr>
+          <tr>
+            <td><strong>App activity</strong></td>
+            <td>Created shipments, registered addresses, status history</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;font-size:14px;color:var(--text-muted);">We do not collect payment details, banking information, or sensitive health data.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🎯</span> Purpose of Processing</h3>
+      <ul>
+        <li><strong>Account:</strong> Authentication, company identification, and access to features.</li>
+        <li><strong>Location:</strong> Selecting and confirming origin and destination addresses on the map.</li>
+        <li><strong>Photos:</strong> Automatic package dimension estimation using AI (Google Gemini).</li>
+        <li><strong>Audio / voice:</strong> Enabling hands-free data entry for package measurements.</li>
+        <li><strong>Activity:</strong> Managing shipments, generating reports, and providing customer support.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔗</span> Third-Party Services</h3>
+      <p>We share data only with infrastructure providers required to operate the service:</p>
+      <ul>
+        <li><strong>Google Firebase</strong> — Authentication, database (Firestore), file storage, push notifications.</li>
+        <li><strong>HERE Technologies</strong> — Maps, geocoding, and address search.</li>
+        <li><strong>Google Gemini API</strong> — Photo analysis for package dimension estimation.</li>
+      </ul>
+      <p style="font-size:14px;color:var(--text-muted);margin-top:10px;">We do not sell, rent, or share your data with third parties for commercial or advertising purposes.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📱</span> Platform-Specific Permissions</h3>
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="plat-title">🤖 Android</div>
+          <ul>
+            <li><code>ACCESS_FINE_LOCATION</code> — Precise address selection on the map</li>
+            <li><code>ACCESS_COARSE_LOCATION</code> — Approximate location for the map</li>
+            <li><code>CAMERA</code> — Photographing packages</li>
+            <li><code>RECORD_AUDIO</code> — Voice dictation</li>
+            <li>Storage / media — Image selection</li>
+          </ul>
+        </div>
+        <div class="platform-card">
+          <div class="plat-title">🍎 iOS</div>
+          <ul>
+            <li>Location While Using App — Address selection on the map</li>
+            <li>Camera — Photographing packages</li>
+            <li>Microphone — Voice dictation</li>
+            <li>Photo Library — Image selection</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:14px;font-size:14px;color:var(--text-muted);">Optional permissions are only activated if the user enables them. You can revoke them at any time in your device settings.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🗓️</span> Data Retention</h3>
+      <p>We retain your data while your account is active or for as long as necessary to provide the service. If you delete your account, we will delete or anonymize your personal information within a reasonable time, unless the law requires us to retain it.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">⚖️</span> Your Rights (Uruguayan Law 18.331)</h3>
+      <p>Under Uruguay's Personal Data Protection Law 18.331, you have the right to:</p>
+      <ul>
+        <li><strong>Access:</strong> Know what data we process about you.</li>
+        <li><strong>Rectification:</strong> Correct inaccurate information.</li>
+        <li><strong>Erasure:</strong> Request deletion of your data.</li>
+        <li><strong>Objection:</strong> Object to the processing of your data in certain cases.</li>
+      </ul>
+      <p>To exercise these rights, contact us at <a href="mailto:comercial@nenufares.net">comercial@nenufares.net</a>.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">👶</span> Children's Privacy</h3>
+      <p>Savia is a business application intended for users aged 18 and older. We do not knowingly collect data from minors. If we discover that a minor has provided information, we will delete it promptly.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">🔒</span> Security</h3>
+      <p>All data is transmitted encrypted via TLS/HTTPS. Cloud-stored data is hosted on Google Firebase infrastructure, which complies with ISO 27001 and SOC 2 security standards. No system is 100% infallible; we recommend keeping your credentials confidential.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">✏️</span> Changes to This Policy</h3>
+      <p>We may update this policy at any time. When we do, we will update the "Last updated" date at the top of this page. We will notify you of significant changes through the app or by email.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">📬</span> Contact</h3>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:comercial@nenufares.net">comercial@nenufares.net</a></li>
+        <li><strong>Phone:</strong> +598 92 800 417</li>
+        <li><strong>Address:</strong> Asunción 1220, 11800, Montevideo, Uruguay</li>
+      </ul>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 <a href="https://www.nenufares.com.uy" target="_blank" rel="noopener">Nenúfares SAS</a> · Montevideo, Uruguay</p>
+  <p style="margin-top:6px;">
+    <a href="mailto:comercial@nenufares.net">comercial@nenufares.net</a> ·
+    <a href="https://www.nenufares.com.uy" target="_blank" rel="noopener">www.nenufares.com.uy</a>
+  </p>
+</footer>
+
+</body>
+</html>
