@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de privacidad — Asistente</title>
+  <meta name="description" content="Cómo Asistente accede, usa, guarda y comparte los datos de tu cuenta de Google.">
+  <link rel="canonical" href="https://app.softlogic.app/privacy.html">
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: #1c2430;
+      background: #f6f7f9;
+    }
+    header, main, footer { width: min(42rem, calc(100% - 2rem)); margin-inline: auto; }
+    header { padding: 2.5rem 0 0.5rem; }
+    header p { margin: 0.25rem 0 0; color: #5c6778; }
+    h1 { font-size: 2rem; line-height: 1.2; margin: 0; }
+    h2 { font-size: 1.2rem; margin: 2rem 0 0.5rem; }
+    main {
+      background: #fff;
+      border: 1px solid #e4e7ec;
+      border-radius: 12px;
+      padding: 0.5rem 1.5rem 1.75rem;
+      margin-top: 1.25rem;
+    }
+    a { color: #0b57d0; }
+    ul { padding-left: 1.2rem; }
+    li + li { margin-top: 0.35rem; }
+    footer { padding: 1.25rem 0 2.5rem; color: #5c6778; font-size: 0.95rem; }
+    footer nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Política de privacidad</h1>
+    <p>Asistente · Softlogic · Vigente desde el 29 de octubre de 2026</p>
+  </header>
+  <main>
+    <h2>Quién opera la aplicación</h2>
+    <p>
+      Asistente es una aplicación personal de Softlogic, publicada en
+      <a href="https://app.softlogic.app/">https://app.softlogic.app/</a>.
+      Corre en el servidor de quien la instala y se usa con su propia cuenta de Google.
+    </p>
+
+    <h2>Datos de Google que se piden</h2>
+    <p>Al conectar la cuenta, Google muestra estos permisos y Asistente los usa así:</p>
+    <ul>
+      <li><strong>Identidad y correo.</strong> Para saber qué cuenta quedó conectada y mostrarla en Ajustes.</li>
+      <li><strong>Google Calendar.</strong> Ver la lista de calendarios, ver eventos y crear eventos. Sirve para la agenda de la app, para agendar desde WhatsApp con <code>/cal</code> y, en una reserva, para revisar si un horario está libre y anotar la reserva confirmada. No borra eventos ni cambia con quién está compartido un calendario. Al revisar disponibilidad, el modelo ve si el horario está ocupado y el nombre del calendario, no el título de los eventos ajenos.</li>
+      <li><strong>Google Sheets.</strong> Leer y escribir planillas. El permiso de Google alcanza a las planillas de la cuenta. Asistente solo abre las que vos adjuntás a una tarea, las filas de avisos de transferencia que configurás, y las planillas o documentos que la propia aplicación crea al cerrar una tarea.</li>
+      <li><strong>Google Drive, solo archivos creados por la app</strong> (<code>drive.file</code>). Crear el resumen de una tarea en Google Docs. No abre el resto de tu Drive.</li>
+    </ul>
+
+    <h2>Para qué se usan</h2>
+    <p>Esos datos se usan únicamente para hacer lo que pedís en Asistente: mostrar y crear eventos, leer y completar las planillas que indicás, y guardar el resumen de una tarea en un archivo nuevo de tu cuenta.</p>
+    <p>El uso cumple la <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de usuario de los servicios de API de Google</a>, incluido el requisito de uso limitado. Los datos de Google no se usan para publicidad, no se venden y no se usan para entrenar modelos.</p>
+
+    <h2>Dónde se guardan</h2>
+    <ul>
+      <li>El permiso de larga duración (refresh token) y el correo de la cuenta conectada quedan en la base del servidor donde corre Asistente. El teléfono no recibe ese permiso.</li>
+      <li>Los tokens de acceso viven en memoria del servidor y se renuevan solos.</li>
+      <li>Los eventos y archivos que Asistente crea quedan en tu cuenta de Google.</li>
+      <li>El servidor guarda un registro de los eventos que creó el asistente (título, horario, calendario y enlace), para mostrarlos en la app y no repetirlos.</li>
+    </ul>
+
+    <h2>Con quién se comparten</h2>
+    <ul>
+      <li><strong>Google</strong>, porque los calendarios, las planillas y los documentos son de tu cuenta.</li>
+      <li><strong>El proveedor de IA que elegís en cada tarea</strong> (Anthropic, OpenAI o xAI). Solo recibe el contenido necesario para esa tarea, por ejemplo celdas de una planilla adjunta o los datos para armar un evento. No recibe el refresh token.</li>
+      <li><strong>El chat de WhatsApp en el que escribís <code>/cal</code>.</strong> Si el evento se crea, ese mismo chat recibe un archivo <code>.ics</code> para que la otra persona pueda sumarlo a su calendario. Eso ocurre solo porque vos pediste agendarlo ahí.</li>
+    </ul>
+    <p>No se comparten con otros terceros.</p>
+
+    <h2>Cuánto tiempo</h2>
+    <p>El permiso guardado en el servidor permanece hasta que desconectás Google desde Ajustes, o hasta que lo revocás en <a href="https://myaccount.google.com/permissions">tu cuenta de Google</a>. Desconectar borra el permiso del servidor y lo revoca en Google. Los eventos, planillas y documentos ya creados siguen en tu cuenta hasta que vos los borres.</p>
+
+    <h2>Cómo dejar de compartirlos</h2>
+    <p>En la app: Ajustes → desconectar Google. También podés quitar el acceso de Asistente en <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</p>
+
+    <h2>Cambios</h2>
+    <p>Si esta política cambia, la versión nueva se publica en esta misma dirección con la fecha actualizada. El uso de permisos nuevos de Google pide reconectar la cuenta y volver a aceptarlos.</p>
+
+    <h2>Contacto</h2>
+    <p>Para consultas sobre esta política, usá el correo de soporte que figura en la pantalla de permiso de Google de Asistente.</p>
+  </main>
+  <footer>
+    <nav>
+      <a href="https://app.softlogic.app/">Inicio</a>
+      <a href="https://app.softlogic.app/terms.html">Términos del servicio</a>
+    </nav>
+  </footer>
+</body>
+</html>
